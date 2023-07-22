@@ -1,4 +1,4 @@
-# ⛩️ KMA Score serverles API
+# ⛩️ KMA Score serverless API
 
 This is a serverless API for KMA Score. It's written in TypeScript and runs on AWS Lambda.
 
