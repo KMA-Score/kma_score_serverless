@@ -30,7 +30,7 @@ This project is structured as a monorepo and based on [Domain Driven Design (DDD
 ### 📜 Presiquites
 
 - [Node.js](https://nodejs.org/en/) (v18 or higher)
-- [pnpm](https://pnpm.io/) (v8 or higher)
+- [npm](https://www.npmjs.com/) (v8 or higher)
 - [AWS CLI](https://aws.amazon.com/cli/) (v2 or higher)
 
 ### 📦 Installation
