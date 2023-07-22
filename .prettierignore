@@ -1,0 +1,6 @@
+.sst
+.vscode
+.github
+build
+node_modules
+packages/*/node_modules

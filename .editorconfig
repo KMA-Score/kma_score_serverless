@@ -1,0 +1,8 @@
+root = true
+
+[*.{.ts,.json}]
+end_of_line = lf
+tab_width = 2
+insert_final_newline = true
+indent_style = space
+tab_width = 2

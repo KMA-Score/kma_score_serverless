@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "exclude": ["packages"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/core/*": ["packages/core/src/*"],
+      "@app/functions/*": ["packages/functions/src/*"],
+    }
+  }
+}

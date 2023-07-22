@@ -1,0 +1,49 @@
+datasource database {
+    url      = env("DB_URL")
+    provider = "mysql"
+}
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+model Student {
+    id        String    @id
+    name      String
+    class     String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime? @updatedAt
+    scores    Score[]
+
+    @@map("students")
+}
+
+model Subject {
+    id              String    @id
+    name            String
+    numberOfCredits Int
+    createdAt       DateTime  @default(now())
+    updatedAt       DateTime? @updatedAt
+    scores          Score[]
+
+    @@map("subjects")
+}
+
+model Score {
+    id                   Int       @id @default(autoincrement())
+    student              Student   @relation(fields: [studentId], references: [id])
+    studentId            String
+    subject              Subject   @relation(fields: [subjectId], references: [id])
+    subjectId            String
+    firstComponentScore  Float?
+    secondComponentScore Float?
+    examScore            Float?
+    averageScore         Float?
+    alphabetScore        String?
+    createdAt            DateTime  @default(now())
+    updatedAt            DateTime? @updatedAt
+
+    @@unique([studentId, subjectId])
+    @@map("scores")
+}
