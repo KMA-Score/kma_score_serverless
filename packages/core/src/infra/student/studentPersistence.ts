@@ -1,4 +1,4 @@
-import { prisma } from "@application/index";
+import { prisma } from '@application/index';
 
 export const getStudentWithScoreById = async (id: string) => {
   const student = await prisma.student.findFirst({

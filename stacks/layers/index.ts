@@ -1,1 +1,1 @@
-export * from "./prismaLayer";
+export * from './prismaLayer';

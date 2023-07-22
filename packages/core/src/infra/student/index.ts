@@ -1,2 +1,2 @@
-export * from "./studentPersistence";
-export * from "./types";
+export * from './studentPersistence';
+export * from './types';

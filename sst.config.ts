@@ -1,11 +1,11 @@
-import { SSTConfig } from "sst";
-import { API } from "./stacks/ApiStack";
+import { SSTConfig } from 'sst';
+import { API } from './stacks/ApiStack';
 
 export default {
   config() {
     return {
-      name: "kma-score-serverless",
-      region: "ap-southeast-1",
+      name: 'kma-score-serverless',
+      region: 'ap-southeast-1',
     };
   },
   stacks(app) {

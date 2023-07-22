@@ -1,2 +1,2 @@
-export * from "./prisma";
-export * from "./util";
+export * from './prisma';
+export * from './util';
