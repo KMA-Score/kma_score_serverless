@@ -1,8 +1,8 @@
-import { LearningResult } from '@application/ports';
-import { isPassedSubject, shouldCalculateScore } from '@application/util';
-import { AlphabetToTetraScore } from '@domain/index';
-import { StudentWithScoresAndSubjects } from '@infra/index';
-import { Score } from '@prisma/client';
+import { LearningResult } from "@application/ports";
+import { isPassedSubject, shouldCalculateScore } from "@application/util";
+import { AlphabetToTetraScore } from "@domain/index";
+import { StudentWithScoresAndSubjects } from "@infra/index";
+import { Score } from "@prisma/client";
 
 export const getLearningResult = (scores: Score[]): LearningResult => {
   const passed = scores.filter((score) => isPassedSubject(score)).length;
@@ -17,7 +17,7 @@ export const getLearningResult = (scores: Score[]): LearningResult => {
 export const getAverageScore = (
   student?: StudentWithScoresAndSubjects,
 ): number => {
-  if (!student) throw new Error('Student not found');
+  if (!student) throw new Error("Student not found");
 
   const { scores } = student;
 

@@ -1,12 +1,12 @@
 {
-	"extends": "@tsconfig/node16/tsconfig.json",
-	"compilerOptions": {
-		"module": "esnext",
-		"baseUrl": "src",
-		"paths": {
-			"@application/*": ["application/*"],
-			"@domain/*": ["domain/*"],
-			"@infra/*": ["infra/*"]
-		}
-	}
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "baseUrl": "src",
+    "paths": {
+      "@application/*": ["application/*"],
+      "@domain/*": ["domain/*"],
+      "@infra/*": ["infra/*"]
+    }
+  }
 }

@@ -1,5 +1,5 @@
-import { Prisma, PrismaClient } from '@prisma/client';
-import { memoize } from 'lodash';
+import { Prisma, PrismaClient } from "@prisma/client";
+import { memoize } from "lodash";
 
 const prismaClient = memoize(
   async (options?: Prisma.PrismaClientOptions): Promise<PrismaClient> => {

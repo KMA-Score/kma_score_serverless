@@ -1,10 +1,10 @@
-import { middleware } from '../middleware';
+import { middleware } from "../middleware";
 import {
   getStudentWithScoreById,
   getLearningResult,
   getAverageScore,
   StudentWithScoresAndSubjects,
-} from '@kma-score-serverless/core/index';
+} from "@kma-score-serverless/core/index";
 
 interface StudentPathParameters {
   id: string;
@@ -17,7 +17,7 @@ export const handler = middleware().handler(async (event) => {
     return {
       statusCode: 400,
       body: JSON.stringify({
-        message: 'Bad request',
+        message: "Bad request",
       }),
     };
   }
@@ -32,7 +32,7 @@ export const handler = middleware().handler(async (event) => {
     return {
       statusCode: 404,
       body: JSON.stringify({
-        message: 'Not found',
+        message: "Not found",
       }),
     };
   }
