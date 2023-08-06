@@ -1,20 +1,18 @@
 import { StackContext, Api } from 'sst/constructs';
-import { Database } from './Database';
 import { prismaLayer } from './layers';
 import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 
 export function API(stackContext: StackContext) {
   const { app, stack } = stackContext;
-  const { DB_HOST, DB_NAME, DB_PORT, DB_USERNAME, DB_PASSWORD } =
-    Database(stackContext);
-
   const layers = [prismaLayer(stackContext)];
 
   const api = new Api(stack, 'api', {
     defaults: {
       function: {
+        environment: {
+          DB_URL: process.env.DB_URL ?? '',
+        },
         runtime: 'nodejs18.x',
-        bind: [DB_HOST, DB_NAME, DB_PORT, DB_USERNAME, DB_PASSWORD],
         nodejs: {
           // This is required for Prisma to work
           esbuild: {
