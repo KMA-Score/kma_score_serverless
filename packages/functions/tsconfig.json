@@ -1,10 +1,10 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
-  "compilerOptions": {
-    "module": "esnext",
-    "baseUrl": ".",
-    "paths": {
-      "@kma-score-serverless/core/*": ["../core/src/*"]
-    }
-  }
+	"extends": "@tsconfig/node18/tsconfig.json",
+	"compilerOptions": {
+		"module": "esnext",
+		"baseUrl": ".",
+		"paths": {
+			"@kma-score-serverless/core/*": ["../core/src/*"]
+		}
+	}
 }

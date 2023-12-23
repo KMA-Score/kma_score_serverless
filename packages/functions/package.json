@@ -7,10 +7,10 @@
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.115",
-    "@types/node": "^20.2.5",
-    "sst": "^2.10.4",
-    "vitest": "^0.31.1"
+    "@types/aws-lambda": "^8.10.130",
+    "@types/node": "^20.10.4",
+    "sst": "^2.38.7",
+    "vitest": "^1.0.4"
   },
   "dependencies": {
     "@middy/core": "^4.5.5",
