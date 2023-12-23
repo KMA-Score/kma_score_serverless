@@ -26,18 +26,36 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 18
-                cache: npm
 
+            - uses: pnpm/action-setup@v2
+              name: Install pnpm
+              with:
+                version: 8
+                run_install: false
+    
+            - name: Get pnpm store directory
+              shell: bash
+              run: |
+                echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      
+            - uses: actions/cache@v3
+              name: Setup pnpm cache
+              with:
+                path: ${{ env.STORE_PATH }}
+                key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                restore-keys: |
+                  ${{ runner.os }}-pnpm-store-
+      
             - name: Install dependencies
-              run: npm ci
+              run: pnpm i --frozen-lockfile
 
             - name: Lint
-              run: npm run lint
+              run: pnpm run lint
 
             - name: Apply all pending migrations to the database
-              run: npx prisma migrate deploy
+              run: pnpm prisma migrate deploy
 
             - name: Deploy
-              run: npx sst deploy --stage prod
+              run: pnpm sst deploy --stage prod
 
 
