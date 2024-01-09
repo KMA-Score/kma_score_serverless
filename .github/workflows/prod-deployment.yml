@@ -12,10 +12,6 @@ jobs:
     deploy:
         runs-on: ubuntu-22.04
         steps:
-            - name: Add masks
-              run: |
-                echo "::add-mask::${{ secrets.DB_URL }}" 
-
             - name: Checkout main branch
               uses: actions/checkout@v2
 
@@ -39,7 +35,7 @@ jobs:
               run: npm run lint
 
             - name: Apply all pending migrations to the database
-              run: npx prisma migrate deploy
+              run: echo "::add-mask::${{ secrets.DB_URL }}" && npx prisma migrate deploy
 
             - name: Deploy
               run: npx sst deploy --stage prod
