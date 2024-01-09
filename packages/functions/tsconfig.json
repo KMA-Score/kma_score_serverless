@@ -2,6 +2,9 @@
 	"extends": "@tsconfig/node18/tsconfig.json",
 	"compilerOptions": {
 		"module": "esnext",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
 		"baseUrl": ".",
 		"paths": {
 			"@kma-score-serverless/core/*": ["../core/src/*"]

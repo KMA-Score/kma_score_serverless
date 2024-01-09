@@ -1,2 +1,2 @@
-export * from './studentPersistence';
+export * from './studentRepository';
 export * from './types';

@@ -8,7 +8,7 @@ This project is structured as a monorepo and based on [Domain Driven Design (DDD
 
 ```
 ├── packages
-│   ├── core                        - Contains all of your business logic following clean architecture and domain driven design/
+│   ├── core                        - Contains all of your business logic following clean architecture and domain driven design
 │   │   └── src
 │   │       ├── application         - Define behaviour of the application, interact with services from outside packages/core
 │   │       │   ├── ports           - Define contracts interfaces that should be honoured by the infrastructure.
@@ -30,19 +30,19 @@ This project is structured as a monorepo and based on [Domain Driven Design (DDD
 ### 📜 Presiquites
 
 - [Node.js](https://nodejs.org/en/) (v18 or higher)
-- [npm](https://www.npmjs.com/) (v8 or higher)
+- [pnpm](https://pnpm.io/) (v8 or higher)
 - [AWS CLI](https://aws.amazon.com/cli/) (v2 or higher)
 
 ### 📦 Installation
 
 ```bash
-$ npm i
+$ pnpm i
 ```
 
 ### 🏃‍♂️ Run
 
 ```bash
-$ npm run dev
+$ pnpm dev
 ```
 
 ### 🚀 Deploy
@@ -55,7 +55,7 @@ $ npm run dev
 #### Deploy
 
 ```bash
-$ npm run deploy --stage [stage_name]
+$ pnpm deploy --stage [stage_name]
 ```
 
 ## 📝 License

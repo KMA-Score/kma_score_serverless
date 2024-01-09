@@ -1,45 +1,53 @@
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { middleware } from '../middleware';
 import {
-  getStudentWithScoreById,
-  getLearningResult,
-  getAverageScore,
-  StudentWithScoresAndSubjects,
+  StudentQueryResult,
+  container,
 } from '@kma-score-serverless/core/index';
 
 interface StudentPathParameters {
   id: string;
 }
 
-export const handler = middleware().handler(async (event) => {
-  const pathParameters = event.pathParameters as StudentPathParameters | null;
+export const handler = middleware().handler(
+  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+    const pathParameters = event.pathParameters as StudentPathParameters | null;
+    const { studentRepository, calculateScoreService } = container;
 
-  if (!pathParameters?.id) {
+    if (!pathParameters?.id) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: 'Bad request',
+        }),
+      };
+    }
+
+    const student: StudentQueryResult = await studentRepository.getById(
+      pathParameters.id,
+      {
+        withScores: true,
+      },
+    );
+
+    const learningResult = calculateScoreService.getLearningResult(
+      student?.scores,
+    );
+    const averageScore = calculateScoreService.getAverageScore(student);
+
+    if (!student) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({
+          message: 'Not found',
+        }),
+      };
+    }
+
     return {
-      statusCode: 400,
-      body: JSON.stringify({
-        message: 'Bad request',
-      }),
+      ...student,
+      ...learningResult,
+      averageScore,
     };
-  }
-
-  const student: StudentWithScoresAndSubjects = await getStudentWithScoreById(
-    pathParameters?.id,
-  );
-  const learningResult = getLearningResult(student?.scores);
-  const averageScore = getAverageScore(student);
-
-  if (!student) {
-    return {
-      statusCode: 404,
-      body: JSON.stringify({
-        message: 'Not found',
-      }),
-    };
-  }
-
-  return {
-    ...student,
-    ...learningResult,
-    averageScore,
-  };
-});
+  },
+);
