@@ -35,7 +35,8 @@ jobs:
               run: npm run lint
 
             - name: Apply all pending migrations to the database
-              run: echo "::add-mask::${{ secrets.DB_URL }}" && npx prisma migrate deploy
+              # redirect output to /dev/null to hide any sensitive information
+              run: npx prisma migrate deploy > /dev/null
 
             - name: Deploy
               run: npx sst deploy --stage prod
