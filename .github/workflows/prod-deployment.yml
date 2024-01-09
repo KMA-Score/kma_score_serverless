@@ -12,6 +12,10 @@ jobs:
     deploy:
         runs-on: ubuntu-22.04
         steps:
+            - name: Add masks
+              run: |
+                echo "::add-mask::${{ secrets.DB_URL }}" 
+
             - name: Checkout main branch
               uses: actions/checkout@v2
 
