@@ -10,10 +10,12 @@
     "console": "sst console",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "postinstall": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate-deploy": "prisma migrate deploy",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write ."
   },
   "prisma": {
     "schema": "prisma/schema.prisma"

@@ -1,13 +1,13 @@
 {
-	"extends": "@tsconfig/node18/tsconfig.json",
-	"exclude": ["packages"],
-	"compilerOptions": {
-		"baseUrl": ".",
-		"module": "esnext",
-		"moduleResolution": "node",
-		"paths": {
-			"@app/core/*": ["packages/core/src/*"],
-			"@app/functions/*": ["packages/functions/src/*"]
-		}
-	}
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "exclude": ["packages"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "paths": {
+      "@app/core/*": ["packages/core/src/*"],
+      "@app/functions/*": ["packages/functions/src/*"]
+    }
+  }
 }
