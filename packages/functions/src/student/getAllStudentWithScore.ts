@@ -1,9 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { middleware } from '../middleware';
-import {
-  StudentQueryResult,
-  container,
-} from '@kma-score-serverless/core/index';
+import { container } from '@kma-score-serverless/core/index';
 
 interface StudentPathParameters {
   id: string;
@@ -23,17 +20,7 @@ export const handler = middleware().handler(
       };
     }
 
-    const student: StudentQueryResult = await studentRepository.getById(
-      pathParameters.id,
-      {
-        withScores: true,
-      },
-    );
-
-    const learningResult = calculateScoreService.getLearningResult(
-      student?.scores,
-    );
-    const averageScore = calculateScoreService.getAverageScore(student);
+    const student = await studentRepository.getById(pathParameters.id);
 
     if (!student) {
       return {
@@ -43,6 +30,11 @@ export const handler = middleware().handler(
         }),
       };
     }
+
+    const learningResult = calculateScoreService.getLearningResult(
+      student?.scores,
+    );
+    const averageScore = calculateScoreService.getAverageScore(student);
 
     return {
       ...student,

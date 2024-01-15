@@ -1,33 +1,22 @@
-import { prisma } from '@application/index';
-import { IStudentRepository, StudentExpandFields } from '@application/ports';
-import { Prisma } from '@prisma/client';
+import { IStudentRepository } from '@application/ports';
+import { db } from '@db/index';
 import { Repository } from 'shared';
-import { StudentQueryResult } from './types';
 
 @Repository()
 export class StudentRepository implements IStudentRepository {
-  async getById(id: string, expandFields: StudentExpandFields) {
-    // TODO: Implement a better solution for dynamic include
-    const include: Prisma.StudentInclude = {
-      scores: expandFields.withScores
-        ? {
-            include: {
-              subject: true,
-            },
-            where: {
-              studentId: id,
-            },
-          }
-        : {},
-    };
-
-    const student = await prisma.student.findUnique({
-      include,
-      where: {
-        id: id,
+  async getById(id: string) {
+    const student = await db.query.students.findFirst({
+      where: (student, { eq }) => eq(student.id, id),
+      with: {
+        // TODO: This need to be dynamic, but drizzle dynamic with have problem with nested with: https://github.com/drizzle-team/drizzle-orm/issues/824
+        scores: {
+          with: {
+            subject: true,
+          },
+        },
       },
     });
 
-    return student as unknown as StudentQueryResult;
+    return student;
   }
 }

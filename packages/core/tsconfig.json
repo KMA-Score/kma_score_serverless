@@ -8,8 +8,11 @@
 		"baseUrl": "src",
 		"paths": {
 			"@application/*": ["application/*"],
+			"@container/*": ["container/*"],
+			"@db/*": ["db/*"],
 			"@domain/*": ["domain/*"],
-			"@infra/*": ["infra/*"]
+			"@infra/*": ["infra/*"],
+			"@shared/*": ["shared/*"]
 		}
 	}
 }

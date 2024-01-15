@@ -1,13 +1,5 @@
-import { StudentQueryResult } from '@infra/index';
-import { ExpandFields } from '../shared';
-
-export interface StudentExpandFields extends ExpandFields {
-  withScores?: boolean;
-}
+import { StudentQueryResult } from '@infra/student';
 
 export interface IStudentRepository {
-  getById(
-    id: string,
-    expandFields?: StudentExpandFields,
-  ): Promise<StudentQueryResult>;
+  getById(id: string): Promise<StudentQueryResult>;
 }
