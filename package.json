@@ -28,7 +28,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.0",
-    "lint-staged": "^13.2.3",
+    "lint-staged": "^13.3.0",
     "prettier": "3.0.0",
     "prisma": "^5.3.3",
     "sst": "^2.38.7",
@@ -40,5 +40,12 @@
   "dependencies": {
     "fs-extra": "^11.1.1",
     "lodash": "^4.17.21"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:fix",
+      "npm run format",
+      "git add ."
+    ]
   }
 }

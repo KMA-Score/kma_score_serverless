@@ -1,7 +1,5 @@
 {
-  "namespaces": [
-    "public"
-  ],
+  "namespaces": ["public"],
   "name": "public",
   "tables": [
     {
@@ -63,9 +61,7 @@
       "indexes": [
         {
           "keyName": "students_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -134,9 +130,7 @@
       "indexes": [
         {
           "keyName": "subjects_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -242,10 +236,7 @@
       "indexes": [
         {
           "keyName": "scores_pkey",
-          "columnNames": [
-            "studentId",
-            "subjectId"
-          ],
+          "columnNames": ["studentId", "subjectId"],
           "composite": true,
           "constraint": true,
           "primary": true,
@@ -256,25 +247,17 @@
       "foreignKeys": {
         "scores_studentId_foreign": {
           "constraintName": "scores_studentId_foreign",
-          "columnNames": [
-            "studentId"
-          ],
+          "columnNames": ["studentId"],
           "localTableName": "public.scores",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.students",
           "updateRule": "cascade"
         },
         "scores_subjectId_foreign": {
           "constraintName": "scores_subjectId_foreign",
-          "columnNames": [
-            "subjectId"
-          ],
+          "columnNames": ["subjectId"],
           "localTableName": "public.scores",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.subjects",
           "updateRule": "cascade"
         }

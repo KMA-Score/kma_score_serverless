@@ -8,18 +8,10 @@
     "moduleResolution": "node",
     "baseUrl": "src",
     "paths": {
-      "@application/*": [
-        "application/*"
-      ],
-      "@domain/*": [
-        "domain/*"
-      ],
-      "@infra/*": [
-        "infra/*"
-      ],
-      "@entities/*": [
-        "entities/*"
-      ]
+      "@application/*": ["application/*"],
+      "@domain/*": ["domain/*"],
+      "@infra/*": ["infra/*"],
+      "@entities/*": ["entities/*"]
     }
   }
 }
