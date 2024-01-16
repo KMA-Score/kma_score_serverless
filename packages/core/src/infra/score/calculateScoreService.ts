@@ -2,12 +2,13 @@ import { LearningResult } from '@application/ports';
 import { isPassedSubject, shouldCalculateScore } from '@application/util';
 import { AlphabetToTetraScore } from '@domain/index';
 import { StudentQueryResult } from '@infra/index';
-import { Score } from '@prisma/client';
 import { Service } from 'typedi';
+import { Collection } from '@mikro-orm/core';
+import { ScoresEntity } from '@application/db/entities/scores.entity';
 
 @Service()
 export class CalculateScoreService {
-  getLearningResult(scores: Score[]): LearningResult {
+  getLearningResult(scores: Collection<ScoresEntity>): LearningResult {
     const passed = scores.filter((score) => isPassedSubject(score)).length;
     const failed = scores.length - passed;
 
@@ -37,7 +38,7 @@ export class CalculateScoreService {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           AlphabetToTetraScore[score.alphabetScore] *
-            score.subject.numberOfCredits
+            score.subjectId.unwrap().numberOfCredits
         );
       }
       return acc;
@@ -45,7 +46,7 @@ export class CalculateScoreService {
 
     const totalCredits = scores.reduce((acc, score) => {
       if (shouldCalculateScore(score)) {
-        return acc + score.subject.numberOfCredits;
+        return acc + score.subjectId.unwrap().numberOfCredits;
       }
       return acc;
     }, 0);

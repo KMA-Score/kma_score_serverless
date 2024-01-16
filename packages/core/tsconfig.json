@@ -4,12 +4,22 @@
     "module": "esnext",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "baseUrl": "src",
     "paths": {
-      "@application/*": ["application/*"],
-      "@domain/*": ["domain/*"],
-      "@infra/*": ["infra/*"]
+      "@application/*": [
+        "application/*"
+      ],
+      "@domain/*": [
+        "domain/*"
+      ],
+      "@infra/*": [
+        "infra/*"
+      ],
+      "@entities/*": [
+        "entities/*"
+      ]
     }
   }
 }

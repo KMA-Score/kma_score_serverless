@@ -1,4 +1,2 @@
-import 'reflect-metadata';
-
-export * from './prisma';
+export * from './db';
 export * from './util';

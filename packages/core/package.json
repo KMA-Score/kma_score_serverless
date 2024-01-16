@@ -12,6 +12,8 @@
     "vitest": "^1.0.4"
   },
   "dependencies": {
+    "@mikro-orm/core": "^6.0.4",
+    "@mikro-orm/postgresql": "^6.0.4",
     "reflect-metadata": "^0.2.1",
     "typedi": "^0.10.0"
   }

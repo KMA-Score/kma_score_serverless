@@ -1,13 +1,22 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
-  "exclude": ["packages"],
+  "exclude": [
+    "packages"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "module": "esnext",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "paths": {
-      "@app/core/*": ["packages/core/src/*"],
-      "@app/functions/*": ["packages/functions/src/*"]
+      "@app/core/*": [
+        "packages/core/src/*"
+      ],
+      "@app/functions/*": [
+        "packages/functions/src/*"
+      ]
     }
   }
 }

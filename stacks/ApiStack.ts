@@ -1,10 +1,9 @@
 import { StackContext, Api } from 'sst/constructs';
-import { prismaLayer } from './layers';
 import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 
 export function API(stackContext: StackContext) {
   const { app, stack } = stackContext;
-  const layers = [prismaLayer(stackContext)];
+  const layers: never[] = [];
 
   const api = new Api(stack, 'api', {
     defaults: {
@@ -14,9 +13,18 @@ export function API(stackContext: StackContext) {
         },
         runtime: 'nodejs18.x',
         nodejs: {
-          // This is required for Prisma to work
+          // This is required for Mikro to work
           esbuild: {
-            external: ['@prisma/client', '.prisma'],
+            external: [
+              'sqlite3',
+              'better-sqlite3',
+              'mysql',
+              'mysql2',
+              'oracledb',
+              'pg-native',
+              'pg-query-stream',
+              'tedious',
+            ],
           },
         },
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

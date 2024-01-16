@@ -1,8 +1,10 @@
-import { Score } from '@prisma/client';
 import { LearningResult } from '../subject';
-import { GetById } from '@infra/student';
+import { StudentQueryResult } from '@infra/student';
+import { Collection } from '@mikro-orm/core';
+import { ScoresEntity } from '@entities/scores.entity';
 
 export interface ICalculateScoreService {
-  getLearningResult(scores: Score[]): LearningResult;
-  getAverageScore(student: GetById): number;
+  getLearningResult(scores: Collection<ScoresEntity>): LearningResult;
+
+  getAverageScore(student: StudentQueryResult): number;
 }
