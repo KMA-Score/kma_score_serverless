@@ -4,7 +4,11 @@
   "type": "module",
   "scripts": {
     "test": "sst bind vitest",
-    "typecheck": "tsc -noEmit"
+    "typecheck": "tsc -noEmit",
+    "db:migrate-list": "npx mikro-orm-esm migration:list",
+    "db:migrate-create": "npx mikro-orm-esm migration:create",
+    "db:migrate-up": "npx mikro-orm-esm migration:up",
+    "db:migrate-down": "npx mikro-orm-esm migration:down"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
@@ -14,7 +18,15 @@
   "dependencies": {
     "@mikro-orm/core": "^6.0.4",
     "@mikro-orm/postgresql": "^6.0.4",
+    "@mikro-orm/cli": "^6.0.4",
+    "@mikro-orm/migrations": "^6.0.4",
     "reflect-metadata": "^0.2.1",
     "typedi": "^0.10.0"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./mikro-orm.config.ts"
+    ]
   }
 }

@@ -4,7 +4,7 @@ import { AlphabetToTetraScore } from '@domain/index';
 import { StudentQueryResult } from '@infra/index';
 import { Service } from 'typedi';
 import { Collection } from '@mikro-orm/core';
-import { ScoresEntity } from '@application/db/entities/scores.entity';
+import { ScoresEntity } from '@entities/scores.entity';
 
 @Service()
 export class CalculateScoreService {

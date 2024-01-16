@@ -11,8 +11,6 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "db:push": "prisma db push",
-    "db:migrate-deploy": "prisma migrate deploy",
     "prepare": "husky install",
     "format": "prettier --write ."
   },

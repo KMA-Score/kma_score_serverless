@@ -6,7 +6,7 @@ import {
   PrimaryKey,
   Property,
 } from '@mikro-orm/core';
-import { ScoresEntity } from './scores.entity';
+import { ScoresEntity } from './scores.entity.js';
 
 @Entity({
   tableName: 'students',

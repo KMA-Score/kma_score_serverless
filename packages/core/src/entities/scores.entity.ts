@@ -6,8 +6,8 @@ import {
   Property,
   Ref,
 } from '@mikro-orm/core';
-import { StudentsEntity } from './students.entity';
-import { SubjectsEntity } from './subjects.entity';
+import { StudentsEntity } from './students.entity.js';
+import { SubjectsEntity } from './subjects.entity.js';
 
 @Entity({
   tableName: 'scores',
