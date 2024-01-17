@@ -1,3 +1,4 @@
+import { Score } from '../../student/entities/scores.entity.js';
 import {
   Collection,
   Entity,
@@ -6,12 +7,11 @@ import {
   PrimaryKey,
   Property,
 } from '@mikro-orm/core';
-import { ScoresEntity } from './scores.entity.js';
 
 @Entity({
-  tableName: 'students',
+  tableName: 'subjects',
 })
-export class StudentsEntity {
+export class Subject {
   [OptionalProps]?: 'createdAt';
 
   @PrimaryKey({ length: 25, type: 'string' })
@@ -20,23 +20,20 @@ export class StudentsEntity {
   @Property({ length: 256, type: 'string' })
   name!: string;
 
-  @Property({ length: 10, type: 'string' })
-  class!: string;
+  @Property({ fieldName: 'numberOfCredits', type: 'number' })
+  numberOfCredits!: number;
 
   @Property({
     fieldName: 'createdAt',
     length: 6,
+    type: 'Date',
     defaultRaw: `now()`,
-    type: Date,
   })
   createdAt!: Date;
 
-  @Property({ fieldName: 'updatedAt', length: 6, nullable: true, type: Date })
+  @Property({ fieldName: 'updatedAt', length: 6, type: 'Date', nullable: true })
   updatedAt?: Date;
 
-  @OneToMany({
-    entity: () => ScoresEntity,
-    mappedBy: 'studentId',
-  })
-  scores = new Collection<ScoresEntity>(this);
+  @OneToMany({ entity: () => Score, mappedBy: 'subjectId' })
+  subjectIdInverse = new Collection<Score>(this);
 }

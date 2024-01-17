@@ -6,8 +6,8 @@ import { Migrator } from '@mikro-orm/migrations';
 dotenv.config();
 
 const config: Options = {
-  entities: ['./src/entities/**/*.entity.js'],
-  entitiesTs: ['./src/entities/**/*.entity.ts'],
+  entities: ['./src/domain/**/entities/*.entity.js'],
+  entitiesTs: ['./src/domain/**/entities/*.entity.ts'],
   dbName: process.env.DB_NAME,
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -16,7 +16,7 @@ const config: Options = {
   driver: PostgreSqlDriver,
   extensions: [Migrator],
   migrations: {
-    path: './mikro-orm',
+    path: './migrations',
   },
 };
 

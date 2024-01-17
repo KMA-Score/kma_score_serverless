@@ -1,14 +1,13 @@
 import { LearningResult } from '@application/ports';
 import { isPassedSubject, shouldCalculateScore } from '@application/util';
-import { AlphabetToTetraScore } from '@domain/index';
 import { StudentQueryResult } from '@infra/index';
 import { Service } from 'typedi';
 import { Collection } from '@mikro-orm/core';
-import { ScoresEntity } from '@entities/scores.entity';
+import { AlphabetToTetraScore, Score } from '@domain/index';
 
 @Service()
 export class CalculateScoreService {
-  getLearningResult(scores: Collection<ScoresEntity>): LearningResult {
+  getLearningResult(scores: Collection<Score>): LearningResult {
     const passed = scores.filter((score) => isPassedSubject(score)).length;
     const failed = scores.length - passed;
 
@@ -34,10 +33,9 @@ export class CalculateScoreService {
 
         return (
           acc +
-          // * This is an enum so it's safe to ignore this
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          AlphabetToTetraScore[score.alphabetScore] *
+          AlphabetToTetraScore[
+            score.alphabetScore as keyof typeof AlphabetToTetraScore
+          ] *
             score.subjectId.unwrap().numberOfCredits
         );
       }

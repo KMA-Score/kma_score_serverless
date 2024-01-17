@@ -1,4 +1,4 @@
+import { Student } from '@domain/index';
 import { Loaded } from '@mikro-orm/core';
-import { StudentsEntity } from '@entities/students.entity';
 
-export type StudentQueryResult = Loaded<StudentsEntity, 'scores', '*', never>;
+export type StudentQueryResult = Loaded<Student, 'scores', '*', never>;

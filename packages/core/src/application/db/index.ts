@@ -1,13 +1,15 @@
 import { MikroORM, PostgreSqlDriver } from '@mikro-orm/postgresql';
-import { StudentsEntity } from '@entities/students.entity';
 import { makeDbConfig } from '@application/db/config';
-import { ScoresEntity } from '@entities/scores.entity';
-import { SubjectsEntity } from '@entities/subjects.entity';
+import { Student } from '@domain/student/entities/students.entity';
+import { Score } from '@domain/student/entities/scores.entity';
+import { Subject } from '@domain/subject/entities/subjects.entity';
 
 const { DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD } = makeDbConfig();
 
+const entities = [Student, Score, Subject];
+
 const orm = await MikroORM.init({
-  entities: [StudentsEntity, ScoresEntity, SubjectsEntity],
+  entities,
   dbName: DB_NAME,
   host: DB_HOST,
   port: Number(DB_PORT),
@@ -16,7 +18,10 @@ const orm = await MikroORM.init({
   driver: PostgreSqlDriver,
 });
 
-export const entityManager = orm.em.fork();
+const entityManager = orm.em.fork();
 
-export const studentsEntityManager =
-  entityManager.getRepository(StudentsEntity);
+export const repositories = {
+  student: entityManager.getRepository(Student),
+  subject: entityManager.getRepository(Subject),
+  score: entityManager.getRepository(Score),
+};

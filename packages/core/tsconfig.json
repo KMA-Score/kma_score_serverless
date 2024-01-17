@@ -11,7 +11,13 @@
       "@application/*": ["application/*"],
       "@domain/*": ["domain/*"],
       "@infra/*": ["infra/*"],
-      "@entities/*": ["entities/*"]
+      "@entities/*": ["entities/*"],
+      "@container/*": ["container/*"],
+      "@shared/*": ["shared/*"]
     }
+  },
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true
   }
 }

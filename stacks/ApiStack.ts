@@ -5,7 +5,6 @@ import { createConfig } from './config';
 export function API(stackContext: StackContext) {
   const { app, stack } = stackContext;
   const config = createConfig(stackContext);
-  const layers: never[] = [];
 
   const { dbConfig } = config;
   const { DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD } = dbConfig;
@@ -17,7 +16,10 @@ export function API(stackContext: StackContext) {
         bind: [DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD],
         runtime: 'nodejs18.x',
         nodejs: {
-          // This is required for Mikro to work
+          /**
+           * ! This is required for Mikro to work
+           * https://mikro-orm.io/docs/deployment#deploy-a-bundle-of-entities-and-dependencies-with-esbuild
+           */
           esbuild: {
             external: [
               'sqlite3',
@@ -31,25 +33,18 @@ export function API(stackContext: StackContext) {
             ],
           },
         },
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        layers: layers,
       },
     },
     routes: {
       'GET /student/{id}':
         'packages/functions/src/student/getAllStudentWithScore.handler',
     },
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     customDomain: app.local
       ? undefined
       : {
           domainName: 'alphascore.dqtio.com',
           isExternalDomain: true,
           cdk: {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             certificate: Certificate.fromCertificateArn(
               stack,
               'score_api_certificate',

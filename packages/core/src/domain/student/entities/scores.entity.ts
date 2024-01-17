@@ -6,34 +6,34 @@ import {
   Property,
   Ref,
 } from '@mikro-orm/core';
-import { StudentsEntity } from './students.entity.js';
-import { SubjectsEntity } from './subjects.entity.js';
+import { Student } from './students.entity.js';
+import { Subject } from '../../subject/entities/subjects.entity.js';
 
 @Entity({
   tableName: 'scores',
 })
-export class ScoresEntity {
+export class Score {
   [PrimaryKeyProp]?: ['studentId', 'subjectId'];
 
   [OptionalProps]?: 'createdAt';
 
   @ManyToOne({
-    entity: () => StudentsEntity,
+    entity: () => Student,
     ref: true,
     fieldName: 'studentId',
     updateRule: 'cascade',
     primary: true,
   })
-  studentId!: Ref<StudentsEntity>;
+  studentId!: Ref<Student>;
 
   @ManyToOne({
-    entity: () => SubjectsEntity,
+    entity: () => Subject,
     ref: true,
     fieldName: 'subjectId',
     updateRule: 'cascade',
     primary: true,
   })
-  subjectId!: Ref<SubjectsEntity>;
+  subjectId!: Ref<Subject>;
 
   @Property({
     fieldName: 'firstComponentScore',

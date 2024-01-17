@@ -10,9 +10,12 @@
     "console": "sst console",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
     "prepare": "husky install",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "db:migrate-list": "pnpm recursive run db:migrate-list",
+    "db:migrate-create": "pnpm recursive run db:migrate-create",
+    "db:migrate-up": "pnpm recursive run db:migrate-up",
+    "db:migrate-down": "pnpm recursive run db:migrate-down"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
@@ -34,16 +37,13 @@
     "sst": "^2.38.7",
     "typescript": "^5.0.4"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "dependencies": {
     "fs-extra": "^11.1.1",
     "lodash": "^4.17.21"
   },
   "lint-staged": {
     "*.ts": [
-      "npm run lint:fix",
+      "npm run lint --fix",
       "npm run format",
       "git add ."
     ]

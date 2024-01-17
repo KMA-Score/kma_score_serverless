@@ -1,12 +1,12 @@
 import { IStudentRepository, StudentExpandFields } from '@application/ports';
 import { Repository } from 'shared';
-import { studentsEntityManager } from '@application/db';
-import { StudentQueryResult } from '@infra/student/types';
+import { StudentQueryResult } from './types';
+import { repositories } from '@application/db';
 
 @Repository()
 export class StudentRepository implements IStudentRepository {
   async getById(id: string, expandFields: StudentExpandFields) {
-    const student = await studentsEntityManager.findOne(
+    const student = await repositories.student.findOne(
       { id: id },
       {
         populate: expandFields.withScores ? ['scores.subjectId'] : [],
