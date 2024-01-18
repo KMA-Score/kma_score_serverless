@@ -1,4 +1,4 @@
-import { Score } from '../../student/entities/scores.entity.js';
+import { Score } from '@domain/student';
 import {
   Collection,
   Entity,
