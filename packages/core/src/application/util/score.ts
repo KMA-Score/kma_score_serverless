@@ -1,9 +1,9 @@
-import { Score } from '@prisma/client';
+import { ScoreSelectType } from '@domain/student';
 
-export const isPassedSubject = (score: Score): boolean => {
+export const isPassedSubject = (score: ScoreSelectType): boolean => {
   return score.alphabetScore !== 'F' && score.alphabetScore !== null;
 };
 
-export const shouldCalculateScore = (score: Score): boolean => {
+export const shouldCalculateScore = (score: ScoreSelectType): boolean => {
   return !score.subjectId.match(/ATQGTC\d+/);
 };

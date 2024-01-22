@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
-    "@types/pg": "^8.10.9",
     "dotenv": "^16.3.1",
     "drizzle-kit": "^0.20.12",
     "sst": "^2.38.7",
@@ -20,7 +19,7 @@
   },
   "dependencies": {
     "drizzle-orm": "^0.29.3",
-    "pg": "^8.11.3",
+    "postgres": "^3.4.3",
     "reflect-metadata": "^0.2.1",
     "typedi": "^0.10.0"
   }
