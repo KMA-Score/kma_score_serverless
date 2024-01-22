@@ -15,7 +15,3 @@ export const makeDbConfig = (): DbConfig => ({
   DB_USERNAME: Config.DB_USERNAME,
   DB_PASSWORD: Config.DB_PASSWORD,
 });
-
-// const DB_CONFIG = new Token<DbConfig>('DB_CONFIG');
-
-// Container.set(DB_CONFIG, makeDbConfig());
