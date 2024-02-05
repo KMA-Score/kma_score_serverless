@@ -9,5 +9,10 @@
 		"paths": {
 			"@kma-score-serverless/core/*": ["../core/src/*"]
 		}
-	}
+	},
+	"references": [
+		{
+			"path": "../core"
+		}
+	]
 }

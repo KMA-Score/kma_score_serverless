@@ -4,15 +4,24 @@
   "type": "module",
   "scripts": {
     "test": "sst bind vitest",
-    "typecheck": "tsc -noEmit"
+    "typecheck": "tsc -noEmit",
+    "db:push": "drizzle-kit push:pg",
+    "db:migrate-gen": "drizzle-kit generate:pg",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:migrate-drop": "drizzle-kit drop --out migrations"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
+    "dotenv": "^16.3.1",
+    "drizzle-kit": "^0.20.12",
     "sst": "^2.38.7",
     "vitest": "^1.0.4"
   },
   "dependencies": {
+    "awilix": "^10.0.1",
+    "drizzle-orm": "^0.29.3",
+    "postgres": "^3.4.3",
     "reflect-metadata": "^0.2.1",
-    "typedi": "^0.10.0"
+    "true-myth": "^7.1.0"
   }
 }

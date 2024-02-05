@@ -1,9 +1,11 @@
-import { CalculateScoreService } from '@infra/score';
-import { StudentRepository } from '@infra/student';
+import { ICalculateScoreService, IStudentRepository } from '@application/ports';
+import { StudentDetailsUseCase } from '@application/useCases';
 
 export interface Cradle {
-  // Services
-  calculateScoreService: CalculateScoreService;
-  // Repositories
-  studentRepository: StudentRepository;
+  // repositories
+  studentRepository: IStudentRepository;
+  // services
+  calculateScoreService: ICalculateScoreService;
+  // use cases
+  studentDetailsUseCase: StudentDetailsUseCase;
 }

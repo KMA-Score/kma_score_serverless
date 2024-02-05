@@ -1,8 +1,8 @@
-import { Score } from '@prisma/client';
+import { StudentQueryResult } from '@infra/student';
 import { LearningResult } from '../subject';
-import { GetById } from '@infra/student';
+import { ScoreSelectType } from '@domain/student';
 
 export interface ICalculateScoreService {
-  getLearningResult(scores: Score[]): LearningResult;
-  getAverageScore(student: GetById): number;
+  getLearningResult(scores: ScoreSelectType[]): LearningResult;
+  getAverageScore(student: StudentQueryResult): number;
 }

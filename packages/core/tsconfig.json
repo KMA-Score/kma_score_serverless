@@ -1,6 +1,7 @@
 {
 	"extends": "@tsconfig/node18/tsconfig.json",
 	"compilerOptions": {
+		"composite": true,
 		"module": "esnext",
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
@@ -8,8 +9,11 @@
 		"baseUrl": "src",
 		"paths": {
 			"@application/*": ["application/*"],
+			"@container/*": ["container/*"],
+			"@db/*": ["db/*"],
 			"@domain/*": ["domain/*"],
-			"@infra/*": ["infra/*"]
+			"@infra/*": ["infra/*"],
+			"@shared/*": ["shared/*"]
 		}
 	}
 }

@@ -1,0 +1,170 @@
+{
+  "id": "163305d2-2989-4e9f-8936-d501742e1bd8",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "scores": {
+      "name": "scores",
+      "schema": "",
+      "columns": {
+        "studentId": {
+          "name": "studentId",
+          "type": "varchar(25)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "subjectId": {
+          "name": "subjectId",
+          "type": "varchar(25)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "firstComponentScore": {
+          "name": "firstComponentScore",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "secondComponentScore": {
+          "name": "secondComponentScore",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "examScore": {
+          "name": "examScore",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "averageScore": {
+          "name": "averageScore",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "alphabetScore": {
+          "name": "alphabetScore",
+          "type": "varchar(2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "scores_studentId_subjectId_pk": {
+          "name": "scores_studentId_subjectId_pk",
+          "columns": [
+            "studentId",
+            "subjectId"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "students": {
+      "name": "students",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(25)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "class": {
+          "name": "class",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "subjects": {
+      "name": "subjects",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(25)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "numberOfCredits": {
+          "name": "numberOfCredits",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
