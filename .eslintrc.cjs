@@ -16,6 +16,8 @@ module.exports = {
 				tabWidth: 2,
 				insertPragma: false,
 				endOfLine: 'lf',
+				emptyLines: true,
+				useTabs: false,
 			},
 		],
 	},
