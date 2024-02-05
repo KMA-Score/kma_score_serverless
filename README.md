@@ -50,7 +50,6 @@ $ pnpm dev
 #### Before you deploy
 
 - If you want to use your custom domain, you need to have a certificate in ACM.
-- Prisma binary need to be generated before deploy.
 
 #### Deploy
 
