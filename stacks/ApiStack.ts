@@ -19,7 +19,7 @@ export function API(stackContext: StackContext) {
     },
     routes: {
       'GET /student/{id}':
-        'packages/functions/src/student/getAllStudentWithScore.handler',
+        'packages/functions/src/student/studentDetails.handler',
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

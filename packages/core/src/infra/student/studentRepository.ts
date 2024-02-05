@@ -1,8 +1,6 @@
 import { IStudentRepository } from '@application/ports';
 import { db } from '@db/index';
-import { Repository } from 'shared';
 
-@Repository()
 export class StudentRepository implements IStudentRepository {
   async getById(id: string) {
     const student = await db.query.students.findFirst({

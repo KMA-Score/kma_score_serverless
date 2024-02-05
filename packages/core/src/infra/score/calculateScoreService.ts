@@ -1,10 +1,8 @@
 import { ICalculateScoreService, LearningResult } from '@application/ports';
 import { isPassedSubject, shouldCalculateScore } from '@application/util';
 import { AlphabetToTetraScore, ScoreSelectType } from '@domain/index';
-import { Service } from 'typedi';
 import { StudentQueryResult } from '../student';
 
-@Service()
 export class CalculateScoreService implements ICalculateScoreService {
   getLearningResult(scores: ScoreSelectType[]): LearningResult {
     const passed = scores.filter((score) => isPassedSubject(score)).length;

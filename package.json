@@ -33,6 +33,7 @@
     "lint-staged": "^13.2.3",
     "prettier": "3.0.0",
     "sst": "^2.38.7",
+    "tsx": "^4.7.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {

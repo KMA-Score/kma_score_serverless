@@ -1,5 +1,5 @@
-import { container } from 'container';
+import { container } from '@container/index';
 
 export type StudentQueryResult = Awaited<
-  ReturnType<typeof container.studentRepository.getById>
+  ReturnType<typeof container.cradle.studentRepository.getById>
 >;
