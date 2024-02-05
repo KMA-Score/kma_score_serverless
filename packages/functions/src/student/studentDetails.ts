@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { middleware } from '../middleware';
+import { APIGatewayProxyEvent } from 'aws-lambda';
+import { middleware } from '../shared/middleware';
 import { plainToInstance } from 'class-transformer';
 import { IsString } from 'class-validator';
 import {
@@ -9,6 +9,7 @@ import {
 } from '@kma-score-serverless/core/index';
 import { UnexpectedError } from '@kma-score-serverless/core/shared';
 import { container } from '@kma-score-serverless/core/container';
+import { HttpResponse } from 'src/shared/util';
 
 class StudentPathParameters {
   @IsString()
@@ -16,7 +17,7 @@ class StudentPathParameters {
 }
 
 export const handler = middleware().handler(
-  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+  async (event: APIGatewayProxyEvent): Promise<HttpResponse> => {
     const pathParameters = event.pathParameters as StudentPathParameters | null;
 
     const query = plainToInstance(StudentDetailsQuery, {
@@ -29,7 +30,7 @@ export const handler = middleware().handler(
     if (res.isOk) {
       return {
         statusCode: 200,
-        body: JSON.stringify(res.value),
+        body: res.value,
       };
     }
 
