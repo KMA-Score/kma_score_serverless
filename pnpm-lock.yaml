@@ -115,6 +115,9 @@ importers:
       '@middy/http-json-body-parser':
         specifier: ^4.5.5
         version: 4.7.0
+      '@middy/http-response-serializer':
+        specifier: ^5.2.3
+        version: 5.2.3
       '@middy/util':
         specifier: ^5.2.3
         version: 5.2.3
@@ -2919,6 +2922,13 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       '@middy/util': 4.7.0
+    dev: false
+
+  /@middy/http-response-serializer@5.2.3:
+    resolution: {integrity: sha512-eB+OQsHRWauKSHLFGALpssoWNTFlHLIn1NLuyj3PH0c80GzcqBLj7Ae48tuEM5i/4vmt7DERMoWgPjZndr+AVQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@middy/util': 5.2.3
     dev: false
 
   /@middy/util@4.7.0:
