@@ -1,7 +1,6 @@
 import { StackContext, Api } from 'sst/constructs';
 import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { createConfig } from './config';
-import { createApiWaf } from './waf';
 
 export function API(stackContext: StackContext) {
   const { app, stack } = stackContext;
@@ -40,11 +39,6 @@ export function API(stackContext: StackContext) {
           },
         },
   });
-
-  if (!app.local) {
-    createApiWaf(stackContext, api);
-  }
-
   stack.addOutputs({
     ApiEndpoint: api.url,
   });
