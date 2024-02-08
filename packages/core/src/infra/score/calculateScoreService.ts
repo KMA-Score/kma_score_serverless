@@ -19,7 +19,7 @@ export class CalculateScoreService implements ICalculateScoreService {
 
     const { scores } = student;
 
-    const totalAverageScore = scores.reduce((acc, score) => {
+    const totalAverageScore = scores.reduce((acc: number, score) => {
       if (shouldCalculateScore(score)) {
         if (
           !score.alphabetScore ||
@@ -40,7 +40,7 @@ export class CalculateScoreService implements ICalculateScoreService {
       return acc;
     }, 0);
 
-    const totalCredits = scores.reduce((acc, score) => {
+    const totalCredits = scores.reduce((acc: number, score) => {
       if (shouldCalculateScore(score)) {
         return acc + score.subject.numberOfCredits;
       }

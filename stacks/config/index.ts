@@ -16,10 +16,31 @@ export function createDbConfig({ stack }: StackContext) {
   };
 }
 
+export function createKcConfig({ stack }: StackContext) {
+  const KC_URL = new Config.Secret(stack, 'KC_URL');
+  const KC_REALM = new Config.Secret(stack, 'KC_REALM');
+  const KC_MASTER_CLIENT_ID = new Config.Secret(stack, 'KC_MASTER_CLIENT_ID');
+  const KC_MASTER_CLIENT_SECRET = new Config.Secret(
+    stack,
+    'KC_MASTER_CLIENT_SECRET',
+  );
+  const KC_CLIENT_ID = new Config.Secret(stack, 'KC_CLIENT_ID');
+
+  return {
+    KC_URL,
+    KC_REALM,
+    KC_MASTER_CLIENT_ID,
+    KC_MASTER_CLIENT_SECRET,
+    KC_CLIENT_ID,
+  };
+}
+
 export function createConfig(context: StackContext) {
   const dbConfig = createDbConfig(context);
+  const kcConfig = createKcConfig(context);
 
   return {
     dbConfig,
+    kcConfig,
   };
 }
