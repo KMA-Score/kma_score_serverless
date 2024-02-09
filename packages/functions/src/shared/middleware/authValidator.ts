@@ -1,30 +1,63 @@
 import middy from '@middy/core';
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { APIGatewayProxyResult } from 'aws-lambda';
 import { container } from '@kma-score-serverless/core/container';
+import { APIGatewayProxyWithAuthEvent } from './types';
 
 export const authValidatorMiddleware = (): middy.MiddlewareObj<
-  APIGatewayProxyEvent,
+  APIGatewayProxyWithAuthEvent,
   APIGatewayProxyResult
 > => {
   const beforeRequest: middy.MiddlewareFn<
-    APIGatewayProxyEvent,
+    APIGatewayProxyWithAuthEvent,
     APIGatewayProxyResult
   > = async (request): Promise<void> => {
     const headers = request.event.headers;
 
     if (!headers.authorization) {
-      throw new Error('Unauthorized');
+      request.response = {
+        statusCode: 401,
+        body: JSON.stringify({
+          statusCode: 401,
+          message: 'Unauthorized',
+        }),
+      };
+
+      return;
     }
 
+    // Get token from header
     const token = headers.authorization.split(' ')[1];
 
-    const authService = container.cradle.authService;
+    // Get authService from DI container
+    const { authService } = container.cradle;
 
-    const isValid = await authService.validateToken(token);
+    // Introspect token
+    const tokenData = await authService.introspectToken(token);
 
-    if (!isValid) {
-      throw new Error('Unauthorized');
+    if (!tokenData.active) {
+      request.response = {
+        statusCode: 401,
+        body: JSON.stringify({
+          statusCode: 401,
+          message: 'Unauthorized',
+        }),
+      };
+
+      return;
     }
+
+    // Add token data to event context for later use
+    request.event.tokenContext = {
+      exp: tokenData.exp,
+      sub: tokenData.sub,
+      email: tokenData.email,
+      name: tokenData.name,
+      username: tokenData.username,
+      roles: (tokenData.realm_access?.roles || []).filter((x) =>
+        x.startsWith('k-'),
+      ),
+      studentCode: (tokenData.email.split('@')[0] || '').toUpperCase(),
+    };
   };
 
   return {

@@ -2,6 +2,7 @@ import middy from '@middy/core';
 import httpErrorHandler from '@middy/http-error-handler';
 import jsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseSerializer from '@middy/http-response-serializer';
+import { authValidatorMiddleware } from './authValidator';
 
 export const middleware = () =>
   middy()
@@ -26,3 +27,6 @@ export const middleware = () =>
         defaultContentType: 'application/json',
       }),
     );
+
+export const middlewareWithAuth = () =>
+  middleware().use(authValidatorMiddleware());

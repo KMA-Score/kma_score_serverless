@@ -28,10 +28,11 @@ export class AuthService implements IAuthService {
     }
 
     const keyStr = `${this.keycloakConfig.KC_CLIENT_ID}:${this.keycloakConfig.KC_CLIENT_SECRET}`;
+
     return Buffer.from(keyStr).toString('base64'); // convert to base64
   }
 
-  private async introspectToken(
+  public async introspectToken(
     token: string,
   ): Promise<KeycloakIntrospectTokenRsp> {
     // TODO: you are useless. f-ing lint rule
@@ -56,18 +57,6 @@ export class AuthService implements IAuthService {
       );
 
       return response.data;
-    } catch (e) {
-      throw e;
-    }
-  }
-
-  async validateToken(token: string): Promise<boolean> {
-    // TODO: you are useless. f-ing lint rule
-    // eslint-disable-next-line no-useless-catch
-    try {
-      const introspectTokenData = await this.introspectToken(token);
-
-      return introspectTokenData.active;
     } catch (e) {
       throw e;
     }

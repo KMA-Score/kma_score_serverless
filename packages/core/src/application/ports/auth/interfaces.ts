@@ -1,3 +1,5 @@
+import { KeycloakIntrospectTokenRsp } from '@infra/auth/types';
+
 export interface IAuthService {
-  validateToken(token: string): Promise<boolean>;
+  introspectToken(token: string): Promise<KeycloakIntrospectTokenRsp>;
 }

@@ -31,6 +31,7 @@ export function API(stackContext: StackContext) {
     routes: {
       'GET /student/{id}':
         'packages/functions/src/student/studentDetails.handler',
+      'GET /user': 'packages/functions/src/student/userDetails.handler',
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
