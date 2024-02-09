@@ -3,6 +3,7 @@ name: Deploy KMA Score API - Prod environment
 env:
     DB_URL: ${{ secrets.DB_URL }}
     CERTIFICATE_ARN: ${{ secrets.CERTIFICATE_ARN }}
+    CUSTOM_DOMAIN: ${{ secrets.CUSTOM_DOMAIN }}
 
 on:
     push:
