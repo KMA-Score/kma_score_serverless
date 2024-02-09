@@ -21,3 +21,6 @@ node_modules
 
 # act secrets
 *.secret
+
+# sst secrets
+.secrets

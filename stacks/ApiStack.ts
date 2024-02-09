@@ -44,7 +44,7 @@ export function API(stackContext: StackContext) {
     customDomain: app.local
       ? undefined
       : {
-          domainName: 'alphascore.dqtio.com',
+          domainName: process.env.CUSTOM_DOMAIN,
           isExternalDomain: true,
           cdk: {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
