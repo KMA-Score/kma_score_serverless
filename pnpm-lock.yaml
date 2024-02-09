@@ -75,6 +75,9 @@ importers:
       awilix:
         specifier: ^10.0.1
         version: 10.0.1
+      axios:
+        specifier: ^1.6.7
+        version: 1.6.7
       drizzle-orm:
         specifier: ^0.29.3
         version: 0.29.3(@aws-sdk/client-rds-data@3.490.0)(kysely@0.25.0)(postgres@3.4.3)(react@18.2.0)
@@ -4380,7 +4383,7 @@ packages:
     dependencies:
       '@aws-sdk/util-utf8-browser': 3.259.0
       '@httptoolkit/websocket-stream': 6.0.1
-      axios: 1.6.5
+      axios: 1.6.7
       buffer: 6.0.3
       crypto-js: 4.2.0
       mqtt: 4.3.8
@@ -4421,8 +4424,8 @@ packages:
       xml2js: 0.5.0
     dev: true
 
-  /axios@1.6.5:
-    resolution: {integrity: sha512-Ii012v05KEVuUoFWmMW/UQv9aRIc3ZwkWDcM+h5Il8izZCtRVpDUfwpoFf7eOtajT3QiGR4yDUx7lPqHJULgbg==}
+  /axios@1.6.7:
+    resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
     dependencies:
       follow-redirects: 1.15.5
       form-data: 4.0.0

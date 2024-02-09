@@ -4,14 +4,12 @@ export interface KeycloakConfig {
   KC_URL: string;
   KC_REALM: string;
   KC_CLIENT_ID: string;
-  KC_MASTER_CLIENT_ID: string;
-  KC_MASTER_CLIENT_SECRET: string;
+  KC_CLIENT_SECRET: string;
 }
 
 export const makeKcConfig = (): KeycloakConfig => ({
   KC_URL: Config.KC_URL,
   KC_REALM: Config.KC_REALM,
   KC_CLIENT_ID: Config.KC_CLIENT_ID,
-  KC_MASTER_CLIENT_ID: Config.KC_MASTER_CLIENT_ID,
-  KC_MASTER_CLIENT_SECRET: Config.KC_MASTER_CLIENT_SECRET,
+  KC_CLIENT_SECRET: Config.KC_CLIENT_SECRET,
 });

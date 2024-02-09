@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { APIGatewayProxyEvent } from 'aws-lambda';
-import { middleware } from '../shared/middleware';
+import { middleware } from '../shared';
 import { plainToInstance } from 'class-transformer';
 import { IsString } from 'class-validator';
 import {
