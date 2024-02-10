@@ -31,7 +31,11 @@ jobs:
                   /sst/kma-score-serverless/prod/Secret/DB_NAME/value=DB_NAME,
                   /sst/kma-score-serverless/prod/Secret/DB_PASSWORD/value=DB_PASSWORD,
                   /sst/kma-score-serverless/prod/Secret/DB_PORT/value=DB_PORT,
-                  /sst/kma-score-serverless/prod/Secret/DB_USERNAME/value=DB_USERNAME"
+                  /sst/kma-score-serverless/prod/Secret/DB_USERNAME/value=DB_USERNAME
+                  /sst/kma-score-serverless/prod/Secret/KC_URL/value=KC_URL
+                  /sst/kma-score-serverless/prod/Secret/KC_REALM/value=KC_REALM
+                  /sst/kma-score-serverless/prod/Secret/KC_CLIENT_ID/value=KC_CLIENT_ID
+                  /sst/kma-score-serverless/prod/Secret/KC_CLIENT_SECRET/value=KC_CLIENT_SECRET"
                 withDecryption: "true"
 
             - name: Setup Node.js
@@ -44,12 +48,12 @@ jobs:
               with:
                 version: 8
                 run_install: false
-    
+
             - name: Get pnpm store directory
               shell: bash
               run: |
                 echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      
+
             - uses: actions/cache@v3
               name: Setup pnpm cache
               with:
@@ -57,7 +61,7 @@ jobs:
                 key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
                 restore-keys: |
                   ${{ runner.os }}-pnpm-store-
-      
+
             - name: Install dependencies
               run: pnpm i --frozen-lockfile
 
