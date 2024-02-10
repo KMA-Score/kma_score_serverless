@@ -30,12 +30,22 @@ export function createKcConfig({ stack }: StackContext) {
   };
 }
 
+export function createStudentScheduleConfig({ stack }: StackContext) {
+  const SCHEDULE_GRPC = new Config.Secret(stack, 'SCHEDULE_GRPC');
+
+  return {
+    SCHEDULE_GRPC,
+  };
+}
+
 export function createConfig(context: StackContext) {
   const dbConfig = createDbConfig(context);
   const kcConfig = createKcConfig(context);
+  const studentScheduleConfig = createStudentScheduleConfig(context);
 
   return {
     dbConfig,
     kcConfig,
+    studentScheduleConfig,
   };
 }

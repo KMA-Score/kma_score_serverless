@@ -26,7 +26,7 @@ jobs:
             - name: Get SSMS parameters
               uses: dkershner6/aws-ssm-getparameters-action@v1
               with:
-                parameterPairs: "/region/primary = ap-southeast-1,
+                parameterPairs: "/regiogn/primary = ap-southeast-1,
                   /sst/kma-score-serverless/prod/Secret/DB_HOST/value=DB_HOST,
                   /sst/kma-score-serverless/prod/Secret/DB_NAME/value=DB_NAME,
                   /sst/kma-score-serverless/prod/Secret/DB_PASSWORD/value=DB_PASSWORD,
@@ -35,7 +35,8 @@ jobs:
                   /sst/kma-score-serverless/prod/Secret/KC_URL/value=KC_URL
                   /sst/kma-score-serverless/prod/Secret/KC_REALM/value=KC_REALM
                   /sst/kma-score-serverless/prod/Secret/KC_CLIENT_ID/value=KC_CLIENT_ID
-                  /sst/kma-score-serverless/prod/Secret/KC_CLIENT_SECRET/value=KC_CLIENT_SECRET"
+                  /sst/kma-score-serverless/prod/Secret/KC_CLIENT_SECRET/value=KC_CLIENT_SECRET
+                  /sst/kma-score-serverless/prod/Secret/SCHEDULE_GRPC/value=SCHEDULE_GRPC"
                 withDecryption: "true"
 
             - name: Setup Node.js

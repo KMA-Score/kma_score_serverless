@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.superkma.quantum;
+
+import "quantum/schedule.proto";
+import "quantum/student.proto";
+
+service KmaQuantumService {
+    rpc GetSemesterList(GetSemesterListReq) returns (GetSemesterListRsp);
+    rpc GetScheduleByStudentCode(GetScheduleByStudentCodeReq) returns (GetScheduleByStudentCodeRsp);
+    rpc GetStudentTuitionFee(GetStudentTuitionFeeReq) returns (GetStudentTuitionFeeRsp);
+}
+

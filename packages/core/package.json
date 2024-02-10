@@ -8,20 +8,26 @@
     "db:push": "drizzle-kit push:pg",
     "db:migrate-gen": "drizzle-kit generate:pg",
     "db:migrate": "tsx scripts/migrate.ts",
-    "db:migrate-drop": "drizzle-kit drop --out migrations"
+    "db:migrate-drop": "drizzle-kit drop --out migrations",
+    "proto:gen": "protoc --plugin=node_modules/ts-proto/protoc-gen-ts_proto --ts_proto_out=./src/domain/schedule/proto --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true --proto_path=./src/domain/schedule/proto ./src/domain/schedule/proto/*.proto",
+    "proto:gen-win": "protoc --plugin=protoc-gen-ts_proto=.\\node_modules\\.bin\\protoc-gen-ts_proto.cmd --ts_proto_out=./src/domain/schedule/proto --proto_path=./src/domain/schedule/proto --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true ./src/domain/schedule/proto/*.proto"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
     "dotenv": "^16.3.1",
     "drizzle-kit": "^0.20.12",
     "sst": "^2.38.7",
+    "ts-proto": "^1.167.3",
     "vitest": "^1.0.4"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.10.0",
+    "@grpc/proto-loader": "^0.7.10",
     "awilix": "^10.0.1",
     "axios": "^1.6.7",
     "drizzle-orm": "^0.29.3",
     "postgres": "^3.4.3",
+    "protobufjs": "^7.2.6",
     "reflect-metadata": "^0.2.1",
     "true-myth": "^7.1.0"
   }

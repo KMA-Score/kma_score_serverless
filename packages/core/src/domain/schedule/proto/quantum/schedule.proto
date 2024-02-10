@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package com.superkma.quantum;
+
+message SemesterData {
+    string name = 1;
+    string hash = 2;
+}
+
+message GetSemesterListReq {}
+
+message GetSemesterListRsp {
+    int32 code = 1;
+    string message = 2;
+    repeated SemesterData semesterList = 3;
+}
+
+message StudentSchedule {
+    string day = 1;
+    string subjectCode = 2;
+    string className = 3;
+    optional string subjectName = 4;
+    optional string teacher = 5;
+    string lesson = 6;
+    string room = 7;
+}
+
+message StudentInfo {
+    string studentCode = 1;
+    string displayName = 2;
+    string studentClass = 3;
+}
+
+message GetScheduleByStudentCodeReq {
+    string studentCode = 1;
+    string semesterHash = 2;
+}
+
+message GetScheduleByStudentCodeRsp {
+    int32 code = 1;
+    string message = 2;
+    StudentInfo studentInfo = 3;
+    repeated StudentSchedule studentSchedule = 4;
+}

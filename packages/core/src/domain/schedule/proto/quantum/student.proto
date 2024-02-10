@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package com.superkma.quantum;
+
+message GetStudentTuitionFeeReq {
+    string studentCode = 1;
+}
+
+message GetStudentTuitionFeeRsp {
+    message TuitionInfo {
+        uint32 paidAmount = 1;
+        uint32 dueAmount = 2;
+        uint32 dueTotalAmount = 3;
+    }
+
+    message PaidDetail {
+        string type = 1;
+        string description = 2;
+        string date = 3;
+        uint32 amount = 4;
+    }
+
+    message DueDetail {
+        string type = 1;
+        string semester = 2;
+        uint32 amount = 3;
+        optional uint32 dueAmount = 4;
+    }
+
+    message DueTotalDetail {
+        string type = 1;
+        string semester = 2;
+        string numOfCredit = 3;
+        string discount = 4;
+        string resitCourse = 5;
+        string upScore = 6;
+        uint32 amount = 7;
+        uint32 dueAmount = 8;
+    }
+
+    message TuitionDetail {
+        repeated PaidDetail paidDetail = 1;
+        repeated DueDetail dueDetail = 2;
+        repeated DueTotalDetail dueTotalDetail = 3;
+    }
+
+    message Data {
+        TuitionInfo tuitionInfo = 1;
+        TuitionDetail tuitionDetail = 2;
+    }
+
+    int32 code = 1;
+    string message = 2;
+    Data data = 3;
+}
