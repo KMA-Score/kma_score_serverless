@@ -10,6 +10,7 @@
     "console": "sst console",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepare": "husky install",
     "db:push": "pnpm recursive run db:push",
     "db:migrate-gen": "pnpm recursive run db:migrate-gen",

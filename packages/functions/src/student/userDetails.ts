@@ -1,28 +1,30 @@
-import 'reflect-metadata';
-import { APIGatewayProxyEvent } from 'aws-lambda';
-import { middleware } from '../shared';
+import { HttpResponse, middlewareWithAuth } from '../shared';
+import { APIGatewayProxyWithAuthEvent } from '../shared/middleware/types';
 import { plainToInstance } from 'class-transformer';
-import { IsString } from 'class-validator';
 import {
   StudentDetailsQuery,
   StudentNotFoundError,
-} from '@kma-score-serverless/core/index';
-import { UnexpectedError } from '@kma-score-serverless/core/shared';
+} from '@kma-score-serverless/core/application';
 import { container } from '@kma-score-serverless/core/container';
-import { HttpResponse } from 'src/shared/util';
+import { UnexpectedError } from '@kma-score-serverless/core/shared';
 
-class StudentPathParameters {
-  @IsString()
-  id!: string;
-}
+export const handler = middlewareWithAuth().handler(
+  async (event: APIGatewayProxyWithAuthEvent): Promise<HttpResponse> => {
+    const id = event.tokenContext.studentCode;
 
-export const handler = middleware().handler(
-  async (event: APIGatewayProxyEvent): Promise<HttpResponse> => {
-    const pathParameters = event.pathParameters as StudentPathParameters | null;
+    if (!id) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: 'Invalid student code',
+        }),
+      };
+    }
 
     const query = plainToInstance(StudentDetailsQuery, {
-      id: pathParameters?.id,
+      id,
     });
+
     const { studentDetailsUseCase } = container.cradle;
 
     const res = await studentDetailsUseCase.execute(query);

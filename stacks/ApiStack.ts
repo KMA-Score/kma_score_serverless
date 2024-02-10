@@ -6,20 +6,32 @@ export function API(stackContext: StackContext) {
   const { app, stack } = stackContext;
   const config = createConfig(stackContext);
 
-  const { dbConfig } = config;
+  const { dbConfig, kcConfig } = config;
 
   const { DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD } = dbConfig;
+  const { KC_URL, KC_REALM, KC_CLIENT_ID, KC_CLIENT_SECRET } = kcConfig;
 
   const api = new Api(stack, 'api', {
     defaults: {
       function: {
         runtime: 'nodejs18.x',
-        bind: [DB_HOST, DB_PORT, DB_NAME, DB_USERNAME, DB_PASSWORD],
+        bind: [
+          DB_HOST,
+          DB_PORT,
+          DB_NAME,
+          DB_USERNAME,
+          DB_PASSWORD,
+          KC_URL,
+          KC_REALM,
+          KC_CLIENT_ID,
+          KC_CLIENT_SECRET,
+        ],
       },
     },
     routes: {
       'GET /student/{id}':
         'packages/functions/src/student/studentDetails.handler',
+      'GET /user': 'packages/functions/src/student/userDetails.handler',
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
