@@ -6,6 +6,7 @@ import {
   SemestersUseCase,
   StudentDetailsUseCase,
   StudentScheduleUseCase,
+  StudentTuitionFeeUseCase,
 } from '@application/useCases';
 import { AuthService } from '@infra/auth';
 import { StudentScheduleService } from '@infra/schedule';
@@ -31,4 +32,5 @@ container.register({
   studentDetailsUseCase: asClass(StudentDetailsUseCase),
   semestersUseCase: asClass(SemestersUseCase),
   studentScheduleUseCase: asClass(StudentScheduleUseCase),
+  studentTuitionFeeUseCase: asClass(StudentTuitionFeeUseCase),
 });

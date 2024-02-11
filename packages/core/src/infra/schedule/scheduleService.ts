@@ -1,4 +1,4 @@
-import { StudentScheduleData } from '@application/ports';
+import { IScheduleService, StudentScheduleData } from '@application/ports';
 import {
   GetScheduleByStudentCodeReq,
   SemesterData,
@@ -6,8 +6,12 @@ import {
 import { KmaQuantumServiceClient } from '@domain/schedule';
 import { makeStudentScheduleConfig } from '@infra/config';
 import { credentials } from '@grpc/grpc-js';
+import {
+  GetStudentTuitionFeeReq,
+  GetStudentTuitionFeeRsp_Data,
+} from '@domain/schedule/proto/quantum/student';
 
-export class StudentScheduleService {
+export class StudentScheduleService implements IScheduleService {
   private grpcClient: KmaQuantumServiceClient;
 
   constructor() {
@@ -56,6 +60,31 @@ export class StudentScheduleService {
           studentInfo: res.studentInfo,
           studentSchedule: res.studentSchedule,
         });
+      });
+    });
+  }
+
+  public getStudentTuitionFee(
+    param: GetStudentTuitionFeeReq,
+  ): Promise<GetStudentTuitionFeeRsp_Data> {
+    return new Promise((resolve, reject) => {
+      this.grpcClient.getStudentTuitionFee(param, (err, res) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+        }
+
+        if (res.code !== 200) {
+          console.error(res.message);
+          reject(res.message);
+        }
+
+        if (!res.data) {
+          console.error('No data');
+          reject('No data');
+        }
+
+        resolve(<GetStudentTuitionFeeRsp_Data>res.data);
       });
     });
   }
