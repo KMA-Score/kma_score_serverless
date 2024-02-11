@@ -40,6 +40,8 @@ export function API(stackContext: StackContext) {
       'GET /semesters': 'packages/functions/src/schedule/semesterList.handler',
       'GET /student/{studentCode}/schedule/{semesterHash}':
         'packages/functions/src/schedule/studentSchedule.handler',
+      'GET /student/{studentCode}/tuition':
+        'packages/functions/src/student/studentTuitionFee.handler',
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

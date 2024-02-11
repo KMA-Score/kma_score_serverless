@@ -1,4 +1,4 @@
-import { StudentDetailsResponse } from './studentDetailsResponse';
+import { StudentDetailsResponse } from '@application/useCases';
 import { StudentDetailsQuery } from './studentDetailsQuery';
 import { ICalculateScoreService, IStudentRepository } from '@application/ports';
 import { Result } from 'true-myth';
