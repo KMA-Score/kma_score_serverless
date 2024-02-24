@@ -3,7 +3,6 @@ import {
   SemestersUseCase,
   StudentDetailsUseCase,
   StudentScheduleUseCase,
-  StudentTuitionFeeUseCase,
 } from '@application/useCases';
 import { IAuthService } from '@application/ports/auth';
 import { IScheduleService } from '@application/ports/schedule/interfaces';
@@ -19,5 +18,4 @@ export interface Cradle {
   studentDetailsUseCase: StudentDetailsUseCase;
   semestersUseCase: SemestersUseCase;
   studentScheduleUseCase: StudentScheduleUseCase;
-  studentTuitionFeeUseCase: StudentTuitionFeeUseCase;
 }

@@ -1,19 +1,19 @@
 {
-	"extends": "@tsconfig/node18/tsconfig.json",
-	"compilerOptions": {
-		"composite": true,
-		"module": "esnext",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"moduleResolution": "node",
-		"baseUrl": "src",
-		"paths": {
-			"@application/*": ["application/*"],
-			"@container/*": ["container/*"],
-			"@db/*": ["db/*"],
-			"@domain/*": ["domain/*"],
-			"@infra/*": ["infra/*"],
-			"@shared/*": ["shared/*"]
-		}
-	}
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "@application/*": ["application/*"],
+      "@container/*": ["container/*"],
+      "@db/*": ["db/*"],
+      "@domain/*": ["domain/*"],
+      "@infra/*": ["infra/*"],
+      "@shared/*": ["shared/*"]
+    }
+  }
 }
