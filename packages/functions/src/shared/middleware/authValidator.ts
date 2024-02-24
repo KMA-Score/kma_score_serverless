@@ -20,6 +20,9 @@ export const authValidatorMiddleware = (): middy.MiddlewareObj<
           statusCode: 401,
           message: 'Unauthorized',
         }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       };
 
       return;
@@ -41,6 +44,9 @@ export const authValidatorMiddleware = (): middy.MiddlewareObj<
           statusCode: 401,
           message: 'Unauthorized',
         }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       };
 
       return;

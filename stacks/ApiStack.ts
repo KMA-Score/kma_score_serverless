@@ -40,9 +40,10 @@ export function API(stackContext: StackContext) {
       // Get semester list
       'GET /semesters': 'packages/functions/src/schedule/semesterList.handler',
       // Users API
-      'GET /user': 'packages/functions/src/student/userDetails.handler',
+      'GET /user': 'packages/functions/src/user/userDetails.handler',
       'GET /user/schedule/{semesterHash}':
-        'packages/functions/src/schedule/studentSchedule.handler',
+        'packages/functions/src/user/userSchedule.handler',
+      'GET /user/score': 'packages/functions/src/user/userScore.handler',
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
