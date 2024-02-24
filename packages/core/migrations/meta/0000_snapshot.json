@@ -69,10 +69,7 @@
       "compositePrimaryKeys": {
         "scores_studentId_subjectId_pk": {
           "name": "scores_studentId_subjectId_pk",
-          "columns": [
-            "studentId",
-            "subjectId"
-          ]
+          "columns": ["studentId", "subjectId"]
         }
       },
       "uniqueConstraints": {}

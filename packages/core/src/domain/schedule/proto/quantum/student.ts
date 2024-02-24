@@ -1,7 +1,7 @@
 /* eslint-disable */
-import _m0 from "protobufjs/minimal";
+import _m0 from 'protobufjs/minimal';
 
-export const protobufPackage = "com.superkma.quantum";
+export const protobufPackage = 'com.superkma.quantum';
 
 export interface GetStudentTuitionFeeReq {
   studentCode: string;
@@ -56,19 +56,26 @@ export interface GetStudentTuitionFeeRsp_Data {
 }
 
 function createBaseGetStudentTuitionFeeReq(): GetStudentTuitionFeeReq {
-  return { studentCode: "" };
+  return { studentCode: '' };
 }
 
 export const GetStudentTuitionFeeReq = {
-  encode(message: GetStudentTuitionFeeReq, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.studentCode !== "") {
+  encode(
+    message: GetStudentTuitionFeeReq,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
+    if (message.studentCode !== '') {
       writer.uint32(10).string(message.studentCode);
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeReq {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeReq {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeReq();
     while (reader.pos < end) {
@@ -91,47 +98,65 @@ export const GetStudentTuitionFeeReq = {
   },
 
   fromJSON(object: any): GetStudentTuitionFeeReq {
-    return { studentCode: isSet(object.studentCode) ? globalThis.String(object.studentCode) : "" };
+    return {
+      studentCode: isSet(object.studentCode)
+        ? globalThis.String(object.studentCode)
+        : '',
+    };
   },
 
   toJSON(message: GetStudentTuitionFeeReq): unknown {
     const obj: any = {};
-    if (message.studentCode !== "") {
+    if (message.studentCode !== '') {
       obj.studentCode = message.studentCode;
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetStudentTuitionFeeReq>, I>>(base?: I): GetStudentTuitionFeeReq {
+  create<I extends Exact<DeepPartial<GetStudentTuitionFeeReq>, I>>(
+    base?: I,
+  ): GetStudentTuitionFeeReq {
     return GetStudentTuitionFeeReq.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeReq>, I>>(object: I): GetStudentTuitionFeeReq {
+  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeReq>, I>>(
+    object: I,
+  ): GetStudentTuitionFeeReq {
     const message = createBaseGetStudentTuitionFeeReq();
-    message.studentCode = object.studentCode ?? "";
+    message.studentCode = object.studentCode ?? '';
     return message;
   },
 };
 
 function createBaseGetStudentTuitionFeeRsp(): GetStudentTuitionFeeRsp {
-  return { code: 0, message: "", data: undefined };
+  return { code: 0, message: '', data: undefined };
 }
 
 export const GetStudentTuitionFeeRsp = {
-  encode(message: GetStudentTuitionFeeRsp, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GetStudentTuitionFeeRsp,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
     if (message.code !== 0) {
       writer.uint32(8).int32(message.code);
     }
-    if (message.message !== "") {
+    if (message.message !== '') {
       writer.uint32(18).string(message.message);
     }
     if (message.data !== undefined) {
-      GetStudentTuitionFeeRsp_Data.encode(message.data, writer.uint32(26).fork()).ldelim();
+      GetStudentTuitionFeeRsp_Data.encode(
+        message.data,
+        writer.uint32(26).fork(),
+      ).ldelim();
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeRsp {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeRsp {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeRsp();
     while (reader.pos < end) {
@@ -156,7 +181,10 @@ export const GetStudentTuitionFeeRsp = {
             break;
           }
 
-          message.data = GetStudentTuitionFeeRsp_Data.decode(reader, reader.uint32());
+          message.data = GetStudentTuitionFeeRsp_Data.decode(
+            reader,
+            reader.uint32(),
+          );
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -170,8 +198,10 @@ export const GetStudentTuitionFeeRsp = {
   fromJSON(object: any): GetStudentTuitionFeeRsp {
     return {
       code: isSet(object.code) ? globalThis.Number(object.code) : 0,
-      message: isSet(object.message) ? globalThis.String(object.message) : "",
-      data: isSet(object.data) ? GetStudentTuitionFeeRsp_Data.fromJSON(object.data) : undefined,
+      message: isSet(object.message) ? globalThis.String(object.message) : '',
+      data: isSet(object.data)
+        ? GetStudentTuitionFeeRsp_Data.fromJSON(object.data)
+        : undefined,
     };
   },
 
@@ -180,7 +210,7 @@ export const GetStudentTuitionFeeRsp = {
     if (message.code !== 0) {
       obj.code = Math.round(message.code);
     }
-    if (message.message !== "") {
+    if (message.message !== '') {
       obj.message = message.message;
     }
     if (message.data !== undefined) {
@@ -189,16 +219,21 @@ export const GetStudentTuitionFeeRsp = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp>, I>>(base?: I): GetStudentTuitionFeeRsp {
+  create<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp>, I>>(
+    base?: I,
+  ): GetStudentTuitionFeeRsp {
     return GetStudentTuitionFeeRsp.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp>, I>>(object: I): GetStudentTuitionFeeRsp {
+  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp>, I>>(
+    object: I,
+  ): GetStudentTuitionFeeRsp {
     const message = createBaseGetStudentTuitionFeeRsp();
     message.code = object.code ?? 0;
-    message.message = object.message ?? "";
-    message.data = (object.data !== undefined && object.data !== null)
-      ? GetStudentTuitionFeeRsp_Data.fromPartial(object.data)
-      : undefined;
+    message.message = object.message ?? '';
+    message.data =
+      object.data !== undefined && object.data !== null
+        ? GetStudentTuitionFeeRsp_Data.fromPartial(object.data)
+        : undefined;
     return message;
   },
 };
@@ -208,7 +243,10 @@ function createBaseGetStudentTuitionFeeRsp_TuitionInfo(): GetStudentTuitionFeeRs
 }
 
 export const GetStudentTuitionFeeRsp_TuitionInfo = {
-  encode(message: GetStudentTuitionFeeRsp_TuitionInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GetStudentTuitionFeeRsp_TuitionInfo,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
     if (message.paidAmount !== 0) {
       writer.uint32(8).uint32(message.paidAmount);
     }
@@ -221,8 +259,12 @@ export const GetStudentTuitionFeeRsp_TuitionInfo = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeRsp_TuitionInfo {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeRsp_TuitionInfo {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeRsp_TuitionInfo();
     while (reader.pos < end) {
@@ -260,9 +302,15 @@ export const GetStudentTuitionFeeRsp_TuitionInfo = {
 
   fromJSON(object: any): GetStudentTuitionFeeRsp_TuitionInfo {
     return {
-      paidAmount: isSet(object.paidAmount) ? globalThis.Number(object.paidAmount) : 0,
-      dueAmount: isSet(object.dueAmount) ? globalThis.Number(object.dueAmount) : 0,
-      dueTotalAmount: isSet(object.dueTotalAmount) ? globalThis.Number(object.dueTotalAmount) : 0,
+      paidAmount: isSet(object.paidAmount)
+        ? globalThis.Number(object.paidAmount)
+        : 0,
+      dueAmount: isSet(object.dueAmount)
+        ? globalThis.Number(object.dueAmount)
+        : 0,
+      dueTotalAmount: isSet(object.dueTotalAmount)
+        ? globalThis.Number(object.dueTotalAmount)
+        : 0,
     };
   },
 
@@ -285,9 +333,9 @@ export const GetStudentTuitionFeeRsp_TuitionInfo = {
   ): GetStudentTuitionFeeRsp_TuitionInfo {
     return GetStudentTuitionFeeRsp_TuitionInfo.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_TuitionInfo>, I>>(
-    object: I,
-  ): GetStudentTuitionFeeRsp_TuitionInfo {
+  fromPartial<
+    I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_TuitionInfo>, I>,
+  >(object: I): GetStudentTuitionFeeRsp_TuitionInfo {
     const message = createBaseGetStudentTuitionFeeRsp_TuitionInfo();
     message.paidAmount = object.paidAmount ?? 0;
     message.dueAmount = object.dueAmount ?? 0;
@@ -297,18 +345,21 @@ export const GetStudentTuitionFeeRsp_TuitionInfo = {
 };
 
 function createBaseGetStudentTuitionFeeRsp_PaidDetail(): GetStudentTuitionFeeRsp_PaidDetail {
-  return { type: "", description: "", date: "", amount: 0 };
+  return { type: '', description: '', date: '', amount: 0 };
 }
 
 export const GetStudentTuitionFeeRsp_PaidDetail = {
-  encode(message: GetStudentTuitionFeeRsp_PaidDetail, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.type !== "") {
+  encode(
+    message: GetStudentTuitionFeeRsp_PaidDetail,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
+    if (message.type !== '') {
       writer.uint32(10).string(message.type);
     }
-    if (message.description !== "") {
+    if (message.description !== '') {
       writer.uint32(18).string(message.description);
     }
-    if (message.date !== "") {
+    if (message.date !== '') {
       writer.uint32(26).string(message.date);
     }
     if (message.amount !== 0) {
@@ -317,8 +368,12 @@ export const GetStudentTuitionFeeRsp_PaidDetail = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeRsp_PaidDetail {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeRsp_PaidDetail {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeRsp_PaidDetail();
     while (reader.pos < end) {
@@ -363,22 +418,24 @@ export const GetStudentTuitionFeeRsp_PaidDetail = {
 
   fromJSON(object: any): GetStudentTuitionFeeRsp_PaidDetail {
     return {
-      type: isSet(object.type) ? globalThis.String(object.type) : "",
-      description: isSet(object.description) ? globalThis.String(object.description) : "",
-      date: isSet(object.date) ? globalThis.String(object.date) : "",
+      type: isSet(object.type) ? globalThis.String(object.type) : '',
+      description: isSet(object.description)
+        ? globalThis.String(object.description)
+        : '',
+      date: isSet(object.date) ? globalThis.String(object.date) : '',
       amount: isSet(object.amount) ? globalThis.Number(object.amount) : 0,
     };
   },
 
   toJSON(message: GetStudentTuitionFeeRsp_PaidDetail): unknown {
     const obj: any = {};
-    if (message.type !== "") {
+    if (message.type !== '') {
       obj.type = message.type;
     }
-    if (message.description !== "") {
+    if (message.description !== '') {
       obj.description = message.description;
     }
-    if (message.date !== "") {
+    if (message.date !== '') {
       obj.date = message.date;
     }
     if (message.amount !== 0) {
@@ -392,28 +449,31 @@ export const GetStudentTuitionFeeRsp_PaidDetail = {
   ): GetStudentTuitionFeeRsp_PaidDetail {
     return GetStudentTuitionFeeRsp_PaidDetail.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_PaidDetail>, I>>(
-    object: I,
-  ): GetStudentTuitionFeeRsp_PaidDetail {
+  fromPartial<
+    I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_PaidDetail>, I>,
+  >(object: I): GetStudentTuitionFeeRsp_PaidDetail {
     const message = createBaseGetStudentTuitionFeeRsp_PaidDetail();
-    message.type = object.type ?? "";
-    message.description = object.description ?? "";
-    message.date = object.date ?? "";
+    message.type = object.type ?? '';
+    message.description = object.description ?? '';
+    message.date = object.date ?? '';
     message.amount = object.amount ?? 0;
     return message;
   },
 };
 
 function createBaseGetStudentTuitionFeeRsp_DueDetail(): GetStudentTuitionFeeRsp_DueDetail {
-  return { type: "", semester: "", amount: 0, dueAmount: undefined };
+  return { type: '', semester: '', amount: 0, dueAmount: undefined };
 }
 
 export const GetStudentTuitionFeeRsp_DueDetail = {
-  encode(message: GetStudentTuitionFeeRsp_DueDetail, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.type !== "") {
+  encode(
+    message: GetStudentTuitionFeeRsp_DueDetail,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
+    if (message.type !== '') {
       writer.uint32(10).string(message.type);
     }
-    if (message.semester !== "") {
+    if (message.semester !== '') {
       writer.uint32(18).string(message.semester);
     }
     if (message.amount !== 0) {
@@ -425,8 +485,12 @@ export const GetStudentTuitionFeeRsp_DueDetail = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeRsp_DueDetail {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeRsp_DueDetail {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeRsp_DueDetail();
     while (reader.pos < end) {
@@ -471,19 +535,23 @@ export const GetStudentTuitionFeeRsp_DueDetail = {
 
   fromJSON(object: any): GetStudentTuitionFeeRsp_DueDetail {
     return {
-      type: isSet(object.type) ? globalThis.String(object.type) : "",
-      semester: isSet(object.semester) ? globalThis.String(object.semester) : "",
+      type: isSet(object.type) ? globalThis.String(object.type) : '',
+      semester: isSet(object.semester)
+        ? globalThis.String(object.semester)
+        : '',
       amount: isSet(object.amount) ? globalThis.Number(object.amount) : 0,
-      dueAmount: isSet(object.dueAmount) ? globalThis.Number(object.dueAmount) : undefined,
+      dueAmount: isSet(object.dueAmount)
+        ? globalThis.Number(object.dueAmount)
+        : undefined,
     };
   },
 
   toJSON(message: GetStudentTuitionFeeRsp_DueDetail): unknown {
     const obj: any = {};
-    if (message.type !== "") {
+    if (message.type !== '') {
       obj.type = message.type;
     }
-    if (message.semester !== "") {
+    if (message.semester !== '') {
       obj.semester = message.semester;
     }
     if (message.amount !== 0) {
@@ -500,12 +568,12 @@ export const GetStudentTuitionFeeRsp_DueDetail = {
   ): GetStudentTuitionFeeRsp_DueDetail {
     return GetStudentTuitionFeeRsp_DueDetail.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_DueDetail>, I>>(
-    object: I,
-  ): GetStudentTuitionFeeRsp_DueDetail {
+  fromPartial<
+    I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_DueDetail>, I>,
+  >(object: I): GetStudentTuitionFeeRsp_DueDetail {
     const message = createBaseGetStudentTuitionFeeRsp_DueDetail();
-    message.type = object.type ?? "";
-    message.semester = object.semester ?? "";
+    message.type = object.type ?? '';
+    message.semester = object.semester ?? '';
     message.amount = object.amount ?? 0;
     message.dueAmount = object.dueAmount ?? undefined;
     return message;
@@ -514,35 +582,38 @@ export const GetStudentTuitionFeeRsp_DueDetail = {
 
 function createBaseGetStudentTuitionFeeRsp_DueTotalDetail(): GetStudentTuitionFeeRsp_DueTotalDetail {
   return {
-    type: "",
-    semester: "",
-    numOfCredit: "",
-    discount: "",
-    resitCourse: "",
-    upScore: "",
+    type: '',
+    semester: '',
+    numOfCredit: '',
+    discount: '',
+    resitCourse: '',
+    upScore: '',
     amount: 0,
     dueAmount: 0,
   };
 }
 
 export const GetStudentTuitionFeeRsp_DueTotalDetail = {
-  encode(message: GetStudentTuitionFeeRsp_DueTotalDetail, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.type !== "") {
+  encode(
+    message: GetStudentTuitionFeeRsp_DueTotalDetail,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
+    if (message.type !== '') {
       writer.uint32(10).string(message.type);
     }
-    if (message.semester !== "") {
+    if (message.semester !== '') {
       writer.uint32(18).string(message.semester);
     }
-    if (message.numOfCredit !== "") {
+    if (message.numOfCredit !== '') {
       writer.uint32(26).string(message.numOfCredit);
     }
-    if (message.discount !== "") {
+    if (message.discount !== '') {
       writer.uint32(34).string(message.discount);
     }
-    if (message.resitCourse !== "") {
+    if (message.resitCourse !== '') {
       writer.uint32(42).string(message.resitCourse);
     }
-    if (message.upScore !== "") {
+    if (message.upScore !== '') {
       writer.uint32(50).string(message.upScore);
     }
     if (message.amount !== 0) {
@@ -554,8 +625,12 @@ export const GetStudentTuitionFeeRsp_DueTotalDetail = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeRsp_DueTotalDetail {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeRsp_DueTotalDetail {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeRsp_DueTotalDetail();
     while (reader.pos < end) {
@@ -628,35 +703,45 @@ export const GetStudentTuitionFeeRsp_DueTotalDetail = {
 
   fromJSON(object: any): GetStudentTuitionFeeRsp_DueTotalDetail {
     return {
-      type: isSet(object.type) ? globalThis.String(object.type) : "",
-      semester: isSet(object.semester) ? globalThis.String(object.semester) : "",
-      numOfCredit: isSet(object.numOfCredit) ? globalThis.String(object.numOfCredit) : "",
-      discount: isSet(object.discount) ? globalThis.String(object.discount) : "",
-      resitCourse: isSet(object.resitCourse) ? globalThis.String(object.resitCourse) : "",
-      upScore: isSet(object.upScore) ? globalThis.String(object.upScore) : "",
+      type: isSet(object.type) ? globalThis.String(object.type) : '',
+      semester: isSet(object.semester)
+        ? globalThis.String(object.semester)
+        : '',
+      numOfCredit: isSet(object.numOfCredit)
+        ? globalThis.String(object.numOfCredit)
+        : '',
+      discount: isSet(object.discount)
+        ? globalThis.String(object.discount)
+        : '',
+      resitCourse: isSet(object.resitCourse)
+        ? globalThis.String(object.resitCourse)
+        : '',
+      upScore: isSet(object.upScore) ? globalThis.String(object.upScore) : '',
       amount: isSet(object.amount) ? globalThis.Number(object.amount) : 0,
-      dueAmount: isSet(object.dueAmount) ? globalThis.Number(object.dueAmount) : 0,
+      dueAmount: isSet(object.dueAmount)
+        ? globalThis.Number(object.dueAmount)
+        : 0,
     };
   },
 
   toJSON(message: GetStudentTuitionFeeRsp_DueTotalDetail): unknown {
     const obj: any = {};
-    if (message.type !== "") {
+    if (message.type !== '') {
       obj.type = message.type;
     }
-    if (message.semester !== "") {
+    if (message.semester !== '') {
       obj.semester = message.semester;
     }
-    if (message.numOfCredit !== "") {
+    if (message.numOfCredit !== '') {
       obj.numOfCredit = message.numOfCredit;
     }
-    if (message.discount !== "") {
+    if (message.discount !== '') {
       obj.discount = message.discount;
     }
-    if (message.resitCourse !== "") {
+    if (message.resitCourse !== '') {
       obj.resitCourse = message.resitCourse;
     }
-    if (message.upScore !== "") {
+    if (message.upScore !== '') {
       obj.upScore = message.upScore;
     }
     if (message.amount !== 0) {
@@ -668,21 +753,23 @@ export const GetStudentTuitionFeeRsp_DueTotalDetail = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_DueTotalDetail>, I>>(
-    base?: I,
-  ): GetStudentTuitionFeeRsp_DueTotalDetail {
-    return GetStudentTuitionFeeRsp_DueTotalDetail.fromPartial(base ?? ({} as any));
+  create<
+    I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_DueTotalDetail>, I>,
+  >(base?: I): GetStudentTuitionFeeRsp_DueTotalDetail {
+    return GetStudentTuitionFeeRsp_DueTotalDetail.fromPartial(
+      base ?? ({} as any),
+    );
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_DueTotalDetail>, I>>(
-    object: I,
-  ): GetStudentTuitionFeeRsp_DueTotalDetail {
+  fromPartial<
+    I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_DueTotalDetail>, I>,
+  >(object: I): GetStudentTuitionFeeRsp_DueTotalDetail {
     const message = createBaseGetStudentTuitionFeeRsp_DueTotalDetail();
-    message.type = object.type ?? "";
-    message.semester = object.semester ?? "";
-    message.numOfCredit = object.numOfCredit ?? "";
-    message.discount = object.discount ?? "";
-    message.resitCourse = object.resitCourse ?? "";
-    message.upScore = object.upScore ?? "";
+    message.type = object.type ?? '';
+    message.semester = object.semester ?? '';
+    message.numOfCredit = object.numOfCredit ?? '';
+    message.discount = object.discount ?? '';
+    message.resitCourse = object.resitCourse ?? '';
+    message.upScore = object.upScore ?? '';
     message.amount = object.amount ?? 0;
     message.dueAmount = object.dueAmount ?? 0;
     return message;
@@ -694,21 +781,37 @@ function createBaseGetStudentTuitionFeeRsp_TuitionDetail(): GetStudentTuitionFee
 }
 
 export const GetStudentTuitionFeeRsp_TuitionDetail = {
-  encode(message: GetStudentTuitionFeeRsp_TuitionDetail, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GetStudentTuitionFeeRsp_TuitionDetail,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
     for (const v of message.paidDetail) {
-      GetStudentTuitionFeeRsp_PaidDetail.encode(v!, writer.uint32(10).fork()).ldelim();
+      GetStudentTuitionFeeRsp_PaidDetail.encode(
+        v!,
+        writer.uint32(10).fork(),
+      ).ldelim();
     }
     for (const v of message.dueDetail) {
-      GetStudentTuitionFeeRsp_DueDetail.encode(v!, writer.uint32(18).fork()).ldelim();
+      GetStudentTuitionFeeRsp_DueDetail.encode(
+        v!,
+        writer.uint32(18).fork(),
+      ).ldelim();
     }
     for (const v of message.dueTotalDetail) {
-      GetStudentTuitionFeeRsp_DueTotalDetail.encode(v!, writer.uint32(26).fork()).ldelim();
+      GetStudentTuitionFeeRsp_DueTotalDetail.encode(
+        v!,
+        writer.uint32(26).fork(),
+      ).ldelim();
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeRsp_TuitionDetail {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeRsp_TuitionDetail {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeRsp_TuitionDetail();
     while (reader.pos < end) {
@@ -719,21 +822,30 @@ export const GetStudentTuitionFeeRsp_TuitionDetail = {
             break;
           }
 
-          message.paidDetail.push(GetStudentTuitionFeeRsp_PaidDetail.decode(reader, reader.uint32()));
+          message.paidDetail.push(
+            GetStudentTuitionFeeRsp_PaidDetail.decode(reader, reader.uint32()),
+          );
           continue;
         case 2:
           if (tag !== 18) {
             break;
           }
 
-          message.dueDetail.push(GetStudentTuitionFeeRsp_DueDetail.decode(reader, reader.uint32()));
+          message.dueDetail.push(
+            GetStudentTuitionFeeRsp_DueDetail.decode(reader, reader.uint32()),
+          );
           continue;
         case 3:
           if (tag !== 26) {
             break;
           }
 
-          message.dueTotalDetail.push(GetStudentTuitionFeeRsp_DueTotalDetail.decode(reader, reader.uint32()));
+          message.dueTotalDetail.push(
+            GetStudentTuitionFeeRsp_DueTotalDetail.decode(
+              reader,
+              reader.uint32(),
+            ),
+          );
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -747,13 +859,19 @@ export const GetStudentTuitionFeeRsp_TuitionDetail = {
   fromJSON(object: any): GetStudentTuitionFeeRsp_TuitionDetail {
     return {
       paidDetail: globalThis.Array.isArray(object?.paidDetail)
-        ? object.paidDetail.map((e: any) => GetStudentTuitionFeeRsp_PaidDetail.fromJSON(e))
+        ? object.paidDetail.map((e: any) =>
+            GetStudentTuitionFeeRsp_PaidDetail.fromJSON(e),
+          )
         : [],
       dueDetail: globalThis.Array.isArray(object?.dueDetail)
-        ? object.dueDetail.map((e: any) => GetStudentTuitionFeeRsp_DueDetail.fromJSON(e))
+        ? object.dueDetail.map((e: any) =>
+            GetStudentTuitionFeeRsp_DueDetail.fromJSON(e),
+          )
         : [],
       dueTotalDetail: globalThis.Array.isArray(object?.dueTotalDetail)
-        ? object.dueTotalDetail.map((e: any) => GetStudentTuitionFeeRsp_DueTotalDetail.fromJSON(e))
+        ? object.dueTotalDetail.map((e: any) =>
+            GetStudentTuitionFeeRsp_DueTotalDetail.fromJSON(e),
+          )
         : [],
     };
   },
@@ -761,30 +879,46 @@ export const GetStudentTuitionFeeRsp_TuitionDetail = {
   toJSON(message: GetStudentTuitionFeeRsp_TuitionDetail): unknown {
     const obj: any = {};
     if (message.paidDetail?.length) {
-      obj.paidDetail = message.paidDetail.map((e) => GetStudentTuitionFeeRsp_PaidDetail.toJSON(e));
+      obj.paidDetail = message.paidDetail.map((e) =>
+        GetStudentTuitionFeeRsp_PaidDetail.toJSON(e),
+      );
     }
     if (message.dueDetail?.length) {
-      obj.dueDetail = message.dueDetail.map((e) => GetStudentTuitionFeeRsp_DueDetail.toJSON(e));
+      obj.dueDetail = message.dueDetail.map((e) =>
+        GetStudentTuitionFeeRsp_DueDetail.toJSON(e),
+      );
     }
     if (message.dueTotalDetail?.length) {
-      obj.dueTotalDetail = message.dueTotalDetail.map((e) => GetStudentTuitionFeeRsp_DueTotalDetail.toJSON(e));
+      obj.dueTotalDetail = message.dueTotalDetail.map((e) =>
+        GetStudentTuitionFeeRsp_DueTotalDetail.toJSON(e),
+      );
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_TuitionDetail>, I>>(
-    base?: I,
-  ): GetStudentTuitionFeeRsp_TuitionDetail {
-    return GetStudentTuitionFeeRsp_TuitionDetail.fromPartial(base ?? ({} as any));
+  create<
+    I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_TuitionDetail>, I>,
+  >(base?: I): GetStudentTuitionFeeRsp_TuitionDetail {
+    return GetStudentTuitionFeeRsp_TuitionDetail.fromPartial(
+      base ?? ({} as any),
+    );
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_TuitionDetail>, I>>(
-    object: I,
-  ): GetStudentTuitionFeeRsp_TuitionDetail {
+  fromPartial<
+    I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_TuitionDetail>, I>,
+  >(object: I): GetStudentTuitionFeeRsp_TuitionDetail {
     const message = createBaseGetStudentTuitionFeeRsp_TuitionDetail();
-    message.paidDetail = object.paidDetail?.map((e) => GetStudentTuitionFeeRsp_PaidDetail.fromPartial(e)) || [];
-    message.dueDetail = object.dueDetail?.map((e) => GetStudentTuitionFeeRsp_DueDetail.fromPartial(e)) || [];
-    message.dueTotalDetail = object.dueTotalDetail?.map((e) => GetStudentTuitionFeeRsp_DueTotalDetail.fromPartial(e)) ||
-      [];
+    message.paidDetail =
+      object.paidDetail?.map((e) =>
+        GetStudentTuitionFeeRsp_PaidDetail.fromPartial(e),
+      ) || [];
+    message.dueDetail =
+      object.dueDetail?.map((e) =>
+        GetStudentTuitionFeeRsp_DueDetail.fromPartial(e),
+      ) || [];
+    message.dueTotalDetail =
+      object.dueTotalDetail?.map((e) =>
+        GetStudentTuitionFeeRsp_DueTotalDetail.fromPartial(e),
+      ) || [];
     return message;
   },
 };
@@ -794,18 +928,31 @@ function createBaseGetStudentTuitionFeeRsp_Data(): GetStudentTuitionFeeRsp_Data 
 }
 
 export const GetStudentTuitionFeeRsp_Data = {
-  encode(message: GetStudentTuitionFeeRsp_Data, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+  encode(
+    message: GetStudentTuitionFeeRsp_Data,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
     if (message.tuitionInfo !== undefined) {
-      GetStudentTuitionFeeRsp_TuitionInfo.encode(message.tuitionInfo, writer.uint32(10).fork()).ldelim();
+      GetStudentTuitionFeeRsp_TuitionInfo.encode(
+        message.tuitionInfo,
+        writer.uint32(10).fork(),
+      ).ldelim();
     }
     if (message.tuitionDetail !== undefined) {
-      GetStudentTuitionFeeRsp_TuitionDetail.encode(message.tuitionDetail, writer.uint32(18).fork()).ldelim();
+      GetStudentTuitionFeeRsp_TuitionDetail.encode(
+        message.tuitionDetail,
+        writer.uint32(18).fork(),
+      ).ldelim();
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetStudentTuitionFeeRsp_Data {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): GetStudentTuitionFeeRsp_Data {
+    const reader =
+      input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetStudentTuitionFeeRsp_Data();
     while (reader.pos < end) {
@@ -816,14 +963,20 @@ export const GetStudentTuitionFeeRsp_Data = {
             break;
           }
 
-          message.tuitionInfo = GetStudentTuitionFeeRsp_TuitionInfo.decode(reader, reader.uint32());
+          message.tuitionInfo = GetStudentTuitionFeeRsp_TuitionInfo.decode(
+            reader,
+            reader.uint32(),
+          );
           continue;
         case 2:
           if (tag !== 18) {
             break;
           }
 
-          message.tuitionDetail = GetStudentTuitionFeeRsp_TuitionDetail.decode(reader, reader.uint32());
+          message.tuitionDetail = GetStudentTuitionFeeRsp_TuitionDetail.decode(
+            reader,
+            reader.uint32(),
+          );
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -848,40 +1001,66 @@ export const GetStudentTuitionFeeRsp_Data = {
   toJSON(message: GetStudentTuitionFeeRsp_Data): unknown {
     const obj: any = {};
     if (message.tuitionInfo !== undefined) {
-      obj.tuitionInfo = GetStudentTuitionFeeRsp_TuitionInfo.toJSON(message.tuitionInfo);
+      obj.tuitionInfo = GetStudentTuitionFeeRsp_TuitionInfo.toJSON(
+        message.tuitionInfo,
+      );
     }
     if (message.tuitionDetail !== undefined) {
-      obj.tuitionDetail = GetStudentTuitionFeeRsp_TuitionDetail.toJSON(message.tuitionDetail);
+      obj.tuitionDetail = GetStudentTuitionFeeRsp_TuitionDetail.toJSON(
+        message.tuitionDetail,
+      );
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_Data>, I>>(base?: I): GetStudentTuitionFeeRsp_Data {
+  create<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_Data>, I>>(
+    base?: I,
+  ): GetStudentTuitionFeeRsp_Data {
     return GetStudentTuitionFeeRsp_Data.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_Data>, I>>(object: I): GetStudentTuitionFeeRsp_Data {
+  fromPartial<I extends Exact<DeepPartial<GetStudentTuitionFeeRsp_Data>, I>>(
+    object: I,
+  ): GetStudentTuitionFeeRsp_Data {
     const message = createBaseGetStudentTuitionFeeRsp_Data();
-    message.tuitionInfo = (object.tuitionInfo !== undefined && object.tuitionInfo !== null)
-      ? GetStudentTuitionFeeRsp_TuitionInfo.fromPartial(object.tuitionInfo)
-      : undefined;
-    message.tuitionDetail = (object.tuitionDetail !== undefined && object.tuitionDetail !== null)
-      ? GetStudentTuitionFeeRsp_TuitionDetail.fromPartial(object.tuitionDetail)
-      : undefined;
+    message.tuitionInfo =
+      object.tuitionInfo !== undefined && object.tuitionInfo !== null
+        ? GetStudentTuitionFeeRsp_TuitionInfo.fromPartial(object.tuitionInfo)
+        : undefined;
+    message.tuitionDetail =
+      object.tuitionDetail !== undefined && object.tuitionDetail !== null
+        ? GetStudentTuitionFeeRsp_TuitionDetail.fromPartial(
+            object.tuitionDetail,
+          )
+        : undefined;
     return message;
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin =
+  | Date
+  | Function
+  | Uint8Array
+  | string
+  | number
+  | boolean
+  | undefined;
 
-export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
-  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+export type DeepPartial<T> = T extends Builtin
+  ? T
+  : T extends globalThis.Array<infer U>
+  ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U>
+  ? ReadonlyArray<DeepPartial<U>>
+  : T extends {}
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
+export type Exact<P, I extends P> = P extends Builtin
+  ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & {
+      [K in Exclude<keyof I, KeysOfUnion<P>>]: never;
+    };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

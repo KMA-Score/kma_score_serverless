@@ -34,14 +34,16 @@ export function API(stackContext: StackContext) {
       },
     },
     routes: {
+      // Legacy support
       'GET /student/{id}':
         'packages/functions/src/student/studentDetails.handler',
-      'GET /user': 'packages/functions/src/student/userDetails.handler',
+      // Get semester list
       'GET /semesters': 'packages/functions/src/schedule/semesterList.handler',
-      'GET /student/{studentCode}/schedule/{semesterHash}':
-        'packages/functions/src/schedule/studentSchedule.handler',
-      'GET /student/{studentCode}/tuition':
-        'packages/functions/src/student/studentTuitionFee.handler',
+      // Users API
+      'GET /user': 'packages/functions/src/user/userDetails.handler',
+      'GET /user/schedule/{semesterHash}':
+        'packages/functions/src/user/userSchedule.handler',
+      'GET /user/score': 'packages/functions/src/user/userScore.handler',
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
